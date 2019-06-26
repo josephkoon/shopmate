@@ -25,7 +25,8 @@ class Product extends Component {
 		super()
 
 		this.state = {
-			
+			selectedSize:'',
+			selectedColor:'',
 		}
 	}
 
@@ -41,14 +42,38 @@ class Product extends Component {
 	}
 
 
-	addToCart(cart_id, product_id){
-		//NEEDS ATTRIBUTES
-		this.props.addToCart(cart_id, product_id, '')
+
+	selectSize(e){
+		let value = e.target.value
+		this.setState({selectedSize:value});
 	}
+
+	selectColor(e){
+		let value = e.target.value
+		this.setState({selectedColor:value});
+	}
+
+	addToCart(cart_id, product_id){
+		let attributes = []
+
+		if(this.state.selectedSize){
+			attributes.push(this.state.selectedSize)
+		}
+		if(this.state.selectedColor){
+			attributes.push(this.state.selectedColor)
+		}
+
+		attributes = attributes.join(", ")
+
+		//NEEDS ATTRIBUTES
+		this.props.addToCart(cart_id, product_id, attributes)
+	}
+
 
 
 	render(){
 		let product
+
 
 		if(this.props.product){
 			let image= "https://backendapi.turing.com/images/products/" + this.props.product.image
@@ -65,7 +90,7 @@ class Product extends Component {
 			}
 			let colorOptions = colors.map(color => {
 				return (
-					<a key={color.attribute_value_id} className="dropdown-item">{color.attribute_value}</a>
+					<option value={color.attribute_value} key={color.attribute_value_id} className="dropdown-item">{color.attribute_value}</option>
 				)
 			})
 
@@ -78,7 +103,7 @@ class Product extends Component {
 			}
 			let sizeOptions = sizes.map(size => {
 				return (
-					<a key={size.attribute_value_id} className="dropdown-item">{size.attribute_value}</a>
+					<option value={size.attribute_value} key={size.attribute_value_id} className="dropdown-item">{size.attribute_value}</option>
 				)
 			})
 
@@ -92,36 +117,24 @@ class Product extends Component {
 
 	     			<div className='col-6'>
 	     				<div style={{padding:'15px'}}>
+	     					<h4 className='light-gray'>Home / </h4>
 	     					<h2>{this.props.product.name}</h2>
-	     				</div>
-
-	     				<div style={{padding:'15px'}}>
 	     					<h2 className='pink'>$ {this.props.product.price}</h2>
 	     				</div>
 
-	     				<div style={{padding:'15px'}}>
-	     					<h3 className='light-gray'>Color</h3>
-							<div className="dropdown">
-							  <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Select Color
-							  </button>
-							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							    {colorOptions}
-							  </div>
-							</div>
+					    <div style={{padding:'15px'}}>
+						    <h3 className='light-gray'>Color</h3>
+							<select value={this.state.selectedColor} onChange={this.selectColor.bind(this)} className="form-control">
+								{colorOptions}
+							</select>
 						</div>
 
-						<div style={{padding:'15px'}}>
-	     					<h3 className='light-gray'>Size</h3>
-							<div className="dropdown">
-							  <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Select Size
-							  </button>
-							  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							  	{sizeOptions}
-							  </div>
-							</div>
-						</div> 
+				    	<div style={{padding:'15px'}}>
+						    <h3 className='light-gray'>Size</h3>
+							<select value={this.state.selectedSize} onChange={this.selectSize.bind(this)} className="form-control">
+								{sizeOptions}
+							</select>
+						</div>
 
 	     				<div style={{padding:'15px'}}>
 	     					<button onClick={() => this.addToCart(cart_id, product_id)} className="btn btn-lg btn-danger">Add to Cart</button>

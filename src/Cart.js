@@ -8,7 +8,7 @@ import HeaderNavigation from './components/HeaderNavigation'
 
 import { 
 	getCart,
-	removeFromCart,
+	emptyCart,
 } from './actions/index';
 
 
@@ -38,10 +38,10 @@ class Cart extends Component {
 	}
 
 
-	// removeFromCart(cart_id){
-	// 	this.props.removeFromCart(cart_id)
-	// 	this.props.getCart(cart_id)
-	// }
+
+	emptyCart(){
+		this.props.emptyCart(this.props.cart_id)
+	}
 
 
 	render(){
@@ -54,13 +54,13 @@ class Cart extends Component {
 				return (
 					<tr key={item.item_id} className="d-flex">
 						<td className="col-2">
-							<img style={{width:'100%'}} src={image} alt=""/>
+							<img style={{width:'80%'}} src={image} alt=""/>
 						</td>
 						<td className="col-5">
 							<h6><strong>{item.name}</strong></h6>
 							<h6>SKU #{item.product_id}</h6>
 						</td>
-						<td className="col-2"></td>
+						<td className="col-2">{item.attributes}</td>
 						<td className="col-2">{item.quantity}</td>
 						<td className="col-1">{item.price}</td>
 					</tr>
@@ -82,7 +82,7 @@ class Cart extends Component {
 		    	<HeaderNavigation/>
 
 		     	<div style={{paddingTop:'30px', paddingBottom:'30px'}} className='container'>
-			     	<h2><span class="badge badge-pill badge-danger">{this.props.cart.length} Items</span> In Cart</h2>
+			     	<h2>{this.props.cart.length} Items In Cart</h2>
 
 			     	<div style={{paddingTop:'30px', paddingBottom:'30px'}}>
 					<table className="table table-borderless" >
@@ -90,7 +90,7 @@ class Cart extends Component {
 							<tr className="d-flex">
 								<th className="col-2">Item</th>
 								<th className="col-5"></th>
-								<th className="col-2">Size</th>
+								<th className="col-2">Details</th>
 								<th className="col-2">Quantity</th>
 								<th className="col-1">Price</th>
 							</tr>
@@ -101,12 +101,23 @@ class Cart extends Component {
 					</table>
 					</div>
 
+
+					<div>
+
 					{this.props.cart.length > 0 && this.props.user &&
-						<button onClick={this.toCheckout.bind(this)} className='btn btn-lg btn-danger'>Checkout</button>
+						<button onClick={this.toCheckout.bind(this)} className='float-left btn btn-lg btn-danger'>Checkout</button>
 					}
-					{this.props.cart.length > 0 && !this.props.user &&
-						<h3><span className='link pink' onClick={this.toLogin.bind(this)}>Login</span> to Checkout</h3>
+					{!this.props.user &&
+						<h3 className='float-left'><span className='link pink' onClick={this.toLogin.bind(this)}>Login </span> to Checkout</h3>
 					}
+
+					{this.props.cart.length > 0 &&
+						<h3 className='float-right'><span className='link pink' onClick={this.emptyCart.bind(this)}>EMPTY CART</span></h3>
+					}
+
+
+					</div>
+
 				</div>
 		    </div>
 		)
@@ -124,8 +135,8 @@ function mapStateToProps(state){
 
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({
-		getCart:getCart,
-		removeFromCart:removeFromCart,
+		getCart,
+		emptyCart,
 	}, dispatch);
 };
 

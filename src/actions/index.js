@@ -14,12 +14,13 @@ import {
 
 	SET_USER,
 	CLEAR_USER,
+	UPDATE_CUSTOMER,
 
 	SETUP_CART,
 	GET_CART,
 	GET_CART_TOTAL,
 	ADD_TO_CART,
-	REMOVE_FROM_CART,
+	EMPTY_CART,
 
 	GET_SHIPPING_REGIONS,
 	GET_SHIPPING_OPTIONS,
@@ -56,15 +57,12 @@ export function register(name, email, password){
 		}
 	};
 }
-
 export function set_RegistrationError(error){
 	return {
 		type:SET_REGISTRATION_ERROR,
 		payload:error
 	};
 }
-
-
 
 
 
@@ -90,14 +88,12 @@ export function login(email, password){
 		}
 	};
 }
-
 export function set_User(user){
 	return {
 		type:SET_USER,
 		payload:user
 	};
 }
-
 export function set_LoginError(error){
 	return {
 		type:SET_LOGIN_ERROR,
@@ -112,6 +108,8 @@ export function logout(){
 		type:CLEAR_USER,
 	};
 }
+
+
 
 
 
@@ -143,7 +141,6 @@ export function setupCart(){
 		}
 	};	
 }
-
 export function setup_Cart(cart){
 	return {
 		type:SETUP_CART,
@@ -159,8 +156,10 @@ export function getCart(cart_id){
 	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
-
+		
 			const cart = await axios.get(ROOT_URL+'/shoppingcart/'+cart_id);
+
+			console.log('cart', cart.data)
 
 			return dispatch(get_Cart(cart.data));
 
@@ -186,8 +185,6 @@ export function addToCart(cart_id, product_id, attributes){
 
 			const cart = await axios.post(ROOT_URL+'/shoppingcart/add', {cart_id:cart_id, product_id:product_id, attributes:attributes});
 
-			console.log('getting new cart', cart.data)
-
 			dispatch(get_Cart(cart.data))
 
 		} catch(error){
@@ -204,19 +201,25 @@ export function addToCart(cart_id, product_id, attributes){
 	};	
 }
  
+export function get_Cart(cart){
+	return {
+		type:GET_CART,
+		payload:cart
+	};
+}
 
-export function removeFromCart(item_id){
+
+
+
+
+export function emptyCart(cart_id){
 	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
-			console.log('item_id', item_id)
+		
+			const cart = await axios.delete(ROOT_URL+'/shoppingcart/empty/'+cart_id);
 
-			const cart = await axios.delete(ROOT_URL+'/shoppingcart/removeProduct/' + item_id);
-
-			console.log(cart)
-			// console.log('getting new cart', cart.data)
-
-			// dispatch(get_Cart(cart.data))
+			return dispatch(empty_Cart());
 
 		} catch(error){
 			//If server returns error, show response
@@ -231,13 +234,17 @@ export function removeFromCart(item_id){
 		}
 	};	
 }
-
-export function get_Cart(cart){
+ 
+export function empty_Cart(){
 	return {
-		type:GET_CART,
-		payload:cart
+		type:EMPTY_CART,
 	};
 }
+
+
+
+
+
 
 
 
@@ -266,7 +273,6 @@ export function getCartTotal(cart_id){
 		}
 	};	
 }
-
 export function get_CartTotal(total){
 	return {
 		type:GET_CART_TOTAL,
@@ -741,7 +747,13 @@ export function createOrder(cart_id, shipping_id, tax_id, token){
 			    'user-key': token, 
 			}
 
-			const order = await axios.post(ROOT_URL+'/orders', {cart_id:cart_id, shipping_id:shipping_id, tax_id:tax_id}, {headers:headers} );
+			let data = {
+				cart_id:cart_id, 
+				shipping_id:shipping_id, 
+				tax_id:tax_id
+			};
+
+			const order = await axios.post(ROOT_URL+'/orders', data, {headers:headers} );
 
 			console.log('order', order)
 
@@ -760,6 +772,89 @@ export function createOrder(cart_id, shipping_id, tax_id, token){
 }
 
 
+
+
+
+
+export function updateCustomer(name, email, token){
+	//dispatch any actions with redux thunk
+	return async function(dispatch){
+		try {
+
+			var headers = {
+			    'user-key': token, 
+			}
+
+			let data = {
+				name:name,
+				email:email,
+			};
+
+			const customer = await axios.put(ROOT_URL+'/customer', data, {headers:headers} );
+
+			return dispatch(update_Customer(customer.data));
+
+		} catch(error){
+			//If server returns error, show response
+			if(error.response){
+				if(error.response.data){
+					console.log('ERROR', error.response.data)
+				}
+			//For other types of error, just display error
+			} else if(error){
+				console.log('ERROR')
+			}
+		}
+	};
+}
+
+
+
+export function updateCustomerAddress(token){
+	//dispatch any actions with redux thunk
+	return async function(dispatch){
+		try {
+
+			var headers = {
+			    'user-key': token, 
+			}
+
+			let data = {
+				address_1:'test address1',
+				address_2:'test address2',
+				city:'test city',
+				region:'test region',
+				postal_code:'test postalcode',
+				country:'test country',
+				shipping_region_id:1
+			};
+
+			const customer = await axios.put(ROOT_URL+'/customers/address', data, {headers:headers} );
+
+			console.log('customer', customer)
+			return dispatch(update_Customer(customer.data));
+
+		} catch(error){
+			//If server returns error, show response
+			if(error.response){
+				if(error.response.data){
+					console.log('ERROR', error.response.data)
+				}
+			//For other types of error, just display error
+			} else if(error){
+				console.log('ERROR')
+			}
+		}
+	};
+}
+
+
+export function update_Customer(customer){
+	return {
+		type:UPDATE_CUSTOMER,
+		payload:customer
+	};
+}
 
 
 

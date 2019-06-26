@@ -7,8 +7,8 @@ import Header from './components/Header'
 import HeaderNavigation from './components/HeaderNavigation'
 
 import { 
-	getCategoriesInDepartment,
-	getProductsInDepartment,
+	updateCustomerAddress,
+	updateCustomer,
 } from './actions/index';
 
 
@@ -18,13 +18,44 @@ class Profile extends Component {
 		super()
 
 		this.state = {
-	
+			name:"",
+			email:"",
 		}
 	}
+
+
+
+	componentDidMount(){
+		let email = ""
+		let name = ""
+
+		if(this.props.user){
+			email = this.props.user.customer.email || ""
+			name = this.props.user.customer.name || ""
+		}
+
+
+		this.setState({name, email})
+	}
+
+
+	updateCustomer(){
+		let token = this.props.user.accessToken
+		this.props.updateCustomer(this.state.name, this.state.email, token)
+	}
+
+	updateCustomerAddress(){
+		let token = this.props.user.accessToken
+		this.props.updateCustomerAddress(token)
+	}
+
+
 
 	render(){
 		let user
 		let profile
+
+		console.log(this.props.user)
 		
 		if(this.props.user){
 			user = this.props.user.customer
@@ -32,33 +63,44 @@ class Profile extends Component {
 				<div>
 		    		<Header/>
 		    		<HeaderNavigation/>
-			     	<div className='background-dark-gray'>
-			     	<div style={{paddingTop:'15px', paddingBottom:'15px'}} className='container'>
-			     		<div style={{padding:'15px'}}>
-							<h3>Information</h3>
-							<h4>Name {user.name}</h4>
-							<h4>Email {user.email}</h4>
+		
 
-							<h4>Phone {user.day_phone}</h4>
-							<h4>Mobile {user.mob_phone}</h4>
-						</div>
-			
-						<div style={{padding:'15px'}}>
-							<h3>Address</h3>
-							<h4>Address 1 {user.address_1}</h4>
-							<h4>Address 2 {user.address_2}</h4>
-							<h4>City {user.city}</h4>
-							<h4>Zipcode {user.postal_code}</h4>
-							<h4>Region {user.region}</h4>
-							<h4>Region ID {user.shipping_region_id}</h4>
-						</div>
+			    	<div style={{paddingTop:'30px', paddingBottom:'30px'}} className='offset-4 col-4'>
+			    		<div style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
+				    		
+				    		<h3>Profile Information</h3>
+							<div style={{padding:'15px'}}>
+								<h4>Name - {user.name}</h4>
+								<input className='form-control' type="text" value={this.state.name} onChange={(e) => { this.setState({name: e.target.value }) }} />
+							</div>
 
-						<div style={{padding:'15px'}}>
-							<h3>Credit</h3>
-							<h4>Credit Card {user.credit_card}</h4>
+							<div style={{padding:'15px'}}>
+								<h4>Email - {user.email}</h4>
+								<input className='form-control' type="text" value={this.state.email} onChange={(e) => { this.setState({email: e.target.value }) }} />
+							</div>
+
+							<div style={{padding:'15px'}}>
+								<button onClick={this.updateCustomer.bind(this)} className='btn btn-light btn-default'>Update Information</button>
+							</div>
+
+							<hr/>
+
+							<h3>Address Information</h3>
+							<div style={{padding:'15px'}}>
+								<h4>Address 1 - {user.address_1}</h4>
+								<h4>Address 2 - {user.address_2}</h4>
+								<h4>City - {user.city}</h4>
+								<h4>Zipcode - {user.postal_code}</h4>
+								<h4>Region - {user.region}</h4>
+								<h4>Region ID - {user.shipping_region_id}</h4>
+							</div>
+							<div style={{padding:'15px'}}>
+								<button onClick={this.updateCustomerAddress.bind(this)} className='btn btn-light btn-default'>Update Address</button>
+							</div>
+
 						</div>
 					</div>
-					</div>
+
 				</div>
 			)
 		}
@@ -81,8 +123,8 @@ function mapStateToProps(state){
 
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({
-		getCategoriesInDepartment:getCategoriesInDepartment,
-		getProductsInDepartment:getProductsInDepartment,
+		updateCustomerAddress,
+		updateCustomer,
 	}, dispatch);
 };
 

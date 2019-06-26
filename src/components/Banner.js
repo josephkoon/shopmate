@@ -26,13 +26,13 @@ class Banner extends Component {
 		}
 
 		return(
-	     	<div style={{position:'relative', display:'flex', alignItems:'center', height:'336px'}}>
+	     	<div style={{position:'relative', display:'flex', alignItems:'center', height:'300px'}}>
 	     		<div style={{left:'0', position:'absolute', width:'100%', padding:'60px'}}>
 	     			<div>
 	     				<h1>Mens wear</h1>
 	     			</div>
 
-	     			<div className='row' style={{width:'75%'}}>
+	     			<div className='row' style={{width:'80%'}}>
 		     			{categoryLabels}
 	     			</div>
 	     		</div>
