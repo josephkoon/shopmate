@@ -16,7 +16,7 @@ import * as serviceWorker from './serviceWorker';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
 
@@ -38,7 +38,7 @@ store.dispatch(getDepartments())
 
 ReactDOM.render(
 	<Provider store={store}>
-		<BrowserRouter>
+		<HashRouter basename='/'>
 			<Route path="/" exact component={Home}/>
 			<Route path="/departments/:id" component={Departments}/>
 			<Route path="/product/:id" component={Product}/>
@@ -50,7 +50,7 @@ ReactDOM.render(
 			<Route path='/cart' component={Cart}/>
 
 			<Route path='/checkout' component={Checkout}/>
-		</BrowserRouter>
+		</HashRouter>
 	</Provider>
 , document.getElementById('root'));
 
