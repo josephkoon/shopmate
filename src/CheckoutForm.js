@@ -8,7 +8,7 @@ import {
 } from './actions/index';
 
 
-var stripe = window.Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+var stripe = window.Stripe('pk_test_NcwpaplBCuTL6I0THD44heRe');
 var elements = stripe.elements();
 
 
