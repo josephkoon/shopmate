@@ -75,7 +75,7 @@ class Home extends Component {
 			    </div>
 			)
 		} else {
-			return (<div>Not Loading</div>)
+			return (<div></div>)
 		}
 
 	}
