@@ -96,7 +96,7 @@ class Header extends Component {
 				<div style={{width:'15%', display:'inline-block', textAlign:'center'}}>
 					<span onClick={this.toCart.bind(this)} className='link topbar'>
 						<img style={{width:'12px', marginTop:'-2px'}} src={bag} alt=""/>
-						<span> Your Bag : </span> 
+						<span> Your Cart : </span> 
 						<span className='pink'> ${this.props.total || "0"} </span>
 					</span>
 				</div>

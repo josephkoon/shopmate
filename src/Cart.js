@@ -50,7 +50,6 @@ class Cart extends Component {
 		if(this.props.cart.length > 0){
 			cartList = this.props.cart.map(item => {
 				let image= "https://backendapi.turing.com/images/products/" + item.image
-				console.log('item', item)
 
 				return (
 					<tr key={item.item_id} className="d-flex">
@@ -83,7 +82,7 @@ class Cart extends Component {
 		    	<HeaderNavigation/>
 
 		     	<div style={{paddingTop:'30px', paddingBottom:'30px'}} className='container'>
-			     	<h2>{this.props.cart.length} Items In Cart</h2>
+			     	<h2><span class="badge badge-pill badge-danger">{this.props.cart.length} Items</span> In Cart</h2>
 
 			     	<div style={{paddingTop:'30px', paddingBottom:'30px'}}>
 					<table className="table table-borderless" >

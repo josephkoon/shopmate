@@ -22,10 +22,13 @@ class Login extends Component {
 	}
 
 
-	login(){
-		this.props.login(this.state.email, this.state.password);
+	async login(){
+		await this.props.login(this.state.email, this.state.password);
 		
-		this.props.history.push('/');
+		if(this.props.user){
+			this.props.history.push('/');
+		}
+		
 	}
 
 
@@ -85,7 +88,8 @@ class Login extends Component {
 
 function mapStateToProps(state){
 	return { 
-		loginError:state.errors.loginError
+		loginError:state.errors.loginError,
+		user:state.user.user,
 	};
 }
 
