@@ -10,7 +10,7 @@ import {
 	createOrder,
 } from './actions/index';
 
-
+import HeaderCheckout from './components/HeaderCheckout'
 import CheckoutForm from './CheckoutForm'
 
 
@@ -120,9 +120,11 @@ class Checkout extends Component {
 
 
 		return(
-		    <div className='row'>
-		    <div className='col-4 offset-4'>
+			<div>
+			<HeaderCheckout/>
 
+		    <div style={{paddingTop:'30px'}} className='row'>
+		    <div className='col-4 offset-4'>
 
 		    	{this.state.step == 1 &&
 		    	<div style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
@@ -181,6 +183,8 @@ class Checkout extends Component {
 
 
 			</div>
+		    </div>
+
 		    </div>
 		)
 	}

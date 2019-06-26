@@ -24,6 +24,8 @@ class Login extends Component {
 
 	login(){
 		this.props.login(this.state.email, this.state.password);
+		
+		this.props.history.push('/');
 	}
 
 

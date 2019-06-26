@@ -8,6 +8,10 @@ import {
 } from '../actions/index'
 
 
+import search from '../icon/icons-search-black.png'
+
+
+
 class HeaderNavigation extends Component {
 
 	toHome(){
@@ -33,6 +37,15 @@ class HeaderNavigation extends Component {
 		}
 
 
+
+		let inputStyle = {
+			//background:`white url(${search}) left no-repeat`,
+			//backgroundSize:'14px',
+			paddingLeft:'12px'
+		}
+
+
+
 		return(
 			<div className='background-black' style={{height:'60px', paddingLeft:'30px', paddingRight:'30px', display:'flex', alignItems:'center'}}>
 				<div style={{width:'20%', display:'inline-block'}}>
@@ -48,7 +61,7 @@ class HeaderNavigation extends Component {
 				</div>
 
 				<div style={{width:'30%', display:'flex', textAlign:'center', justifyContent:'center'}}>
-					<input placeholder='Search Anything' className='form-control'/>
+					<input style={inputStyle} placeholder='Search...' className='form-control'/>
 				</div>
 				
 			</div>
