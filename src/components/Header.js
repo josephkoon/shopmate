@@ -10,6 +10,7 @@ import {
 
 
 import bag from '../icon/icons-bag.png'
+import flag from '../icon/gbr.png'
 
 
 
@@ -90,7 +91,8 @@ class Header extends Component {
 				</div>
 
 				<div style={{width:'25%', display:'inline-block', textAlign:'center'}}>
-					<span className='topbar'> $ USD </span>
+					<img style={{width:'12px', marginTop:'-2px'}} src={flag} alt=""/>
+					<span className='topbar'> £ GBP </span>
 				</div>
 
 				<div style={{width:'15%', display:'inline-block', textAlign:'center'}}>

@@ -53,16 +53,16 @@ class Cart extends Component {
 
 				return (
 					<tr key={item.item_id} className="d-flex">
-						<td className="col-2">
+						<td className="col-3">
 							<img style={{width:'80%'}} src={image} alt=""/>
 						</td>
-						<td className="col-5">
+						<td className="col-4">
 							<h6><strong>{item.name}</strong></h6>
-							<h6>SKU #{item.product_id}</h6>
+							<h6 className='light-gray'>SKU #{item.product_id}</h6>
 						</td>
 						<td className="col-2">{item.attributes}</td>
 						<td className="col-2">{item.quantity}</td>
-						<td className="col-1">{item.price}</td>
+						<td className="col-1"><strong>£{item.price}</strong></td>
 					</tr>
 				);
 			})
@@ -81,18 +81,18 @@ class Cart extends Component {
 		    	<Header/>
 		    	<HeaderNavigation/>
 
-		     	<div style={{paddingTop:'30px', paddingBottom:'30px'}} className='container'>
+		    	<div style={{paddingTop:'30px'}} className='offset-1 col-10'>
 			     	<h2>{this.props.cart.length} Items In Cart</h2>
 
 			     	<div style={{paddingTop:'30px', paddingBottom:'30px'}}>
 					<table className="table table-borderless" >
 						<thead style={{borderTop:'1px solid lightgray', borderBottom:'1px solid lightgray'}}>
 							<tr className="d-flex">
-								<th className="col-2">Item</th>
-								<th className="col-5"></th>
-								<th className="col-2">Details</th>
-								<th className="col-2">Quantity</th>
-								<th className="col-1">Price</th>
+								<th className="col-3 light-gray">Item</th>
+								<th className="col-4 light-gray"></th>
+								<th className="col-2 light-gray">Details</th>
+								<th className="col-2 light-gray">Quantity</th>
+								<th className="col-1 light-gray">Price</th>
 							</tr>
 						</thead>
 						<tbody style={{borderBottom:'1px solid lightgray'}}>
@@ -101,21 +101,17 @@ class Cart extends Component {
 					</table>
 					</div>
 
-
 					<div>
+						{this.props.cart.length > 0 && this.props.user &&
+							<button onClick={this.toCheckout.bind(this)} className='float-left btn btn-lg btn-danger'>Checkout</button>
+						}
+						{!this.props.user &&
+							<h3 className='float-left'><span className='link pink' onClick={this.toLogin.bind(this)}>Login </span> to Checkout</h3>
+						}
 
-					{this.props.cart.length > 0 && this.props.user &&
-						<button onClick={this.toCheckout.bind(this)} className='float-left btn btn-lg btn-danger'>Checkout</button>
-					}
-					{!this.props.user &&
-						<h3 className='float-left'><span className='link pink' onClick={this.toLogin.bind(this)}>Login </span> to Checkout</h3>
-					}
-
-					{this.props.cart.length > 0 &&
-						<h3 className='float-right'><span className='link pink' onClick={this.emptyCart.bind(this)}>EMPTY CART</span></h3>
-					}
-
-
+						{this.props.cart.length > 0 &&
+							<h3 className='float-right'><span className='link pink' onClick={this.emptyCart.bind(this)}>EMPTY CART</span></h3>
+						}
 					</div>
 
 				</div>

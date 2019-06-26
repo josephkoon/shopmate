@@ -50,7 +50,7 @@ class Footer extends Component {
 				</div>
 
 				<div style={{margin:'auto', width:'40%', paddingTop:'15px', paddingBottom:'15px',  display:'flex', justifyContent:'space-around'}}>
-					<span className='topbar dark-gray' style={{flex:'1'}}>©2016 shopmate Ltd  •  Contact  • Privacy policy</span>
+					<span className='topbar dark-gray' style={{flex:'1'}}>©2016 shopmate Ltd  •  Contact  • Privacy Policy</span>
 				</div>
 			</div>
 		);

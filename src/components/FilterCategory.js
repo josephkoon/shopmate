@@ -20,7 +20,7 @@ class FilterCategory extends Component {
 		if(this.props.categories.length > 0){
 			categoryLabels = this.props.categories.map(category => {
 				return (
-					<div key={category.category_id}>
+					<div style={{paddingLeft:'15px'}} key={category.category_id}>
 						<h3 className='link' onClick={() => this.filterProducts(category.category_id)} >{category.name}</h3>
 					</div>
 				)

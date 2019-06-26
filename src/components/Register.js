@@ -53,7 +53,7 @@ class Register extends Component {
 
 		    	<div style={{paddingTop:'30px'}}  className='offset-4 col-4'>
 		    		<div className='box-shadow' style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
-			    	<h3>Register</h3>
+			    	<h2>Register</h2>
 			    	
 			    	<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
 						<div class="form-group">

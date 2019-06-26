@@ -119,7 +119,7 @@ class Product extends Component {
 	     				<div style={{padding:'15px'}}>
 	     					<h4 className='light-gray'>Home / </h4>
 	     					<h2>{this.props.product.name}</h2>
-	     					<h2 className='pink'>$ {this.props.product.price}</h2>
+	     					<h2 className='pink'>£{this.props.product.price}</h2>
 	     				</div>
 
 					    <div style={{padding:'15px'}}>
@@ -192,6 +192,7 @@ class Product extends Component {
 		     	<div className='background-dark-gray'>
 		     	<div style={{paddingTop:'30px', paddingBottom:'30px'}} className='container'>
 		     
+		     		<div className='box-shadow'>
 		     		<div className='background-white'>
 		     		<div style={{padding:'30px'}}>
 		     			{product}
@@ -202,6 +203,7 @@ class Product extends Component {
 		     		<div style={{padding:'30px'}}>
 		     			<h3>Product Reviews</h3>
 		     			{reviews}
+		     		</div>
 		     		</div>
 		     		</div>
 

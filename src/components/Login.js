@@ -58,7 +58,7 @@ class Login extends Component {
 
 		    	<div style={{paddingTop:'30px'}} className='offset-4 col-4'>
 		    		<div className='box-shadow' style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
-			    	<h3>Login</h3>
+			    	<h2>Login</h2>
 
 			    	<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
 						<div className="form-group">
