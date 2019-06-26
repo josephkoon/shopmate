@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/shopmate/static/css/main.f6c025f8.chunk.css",
-    "main.js": "/shopmate/static/js/main.c32e1c19.chunk.js",
-    "main.js.map": "/shopmate/static/js/main.c32e1c19.chunk.js.map",
+    "main.css": "/shopmate/static/css/main.186cbf94.chunk.css",
+    "main.js": "/shopmate/static/js/main.08c38945.chunk.js",
+    "main.js.map": "/shopmate/static/js/main.08c38945.chunk.js.map",
     "runtime~main.js": "/shopmate/static/js/runtime~main.03f445c5.js",
     "runtime~main.js.map": "/shopmate/static/js/runtime~main.03f445c5.js.map",
     "static/js/2.6fab5a84.chunk.js": "/shopmate/static/js/2.6fab5a84.chunk.js",
     "static/js/2.6fab5a84.chunk.js.map": "/shopmate/static/js/2.6fab5a84.chunk.js.map",
     "index.html": "/shopmate/index.html",
-    "precache-manifest.fe1170feb70d22135a632061e7cc7d39.js": "/shopmate/precache-manifest.fe1170feb70d22135a632061e7cc7d39.js",
+    "precache-manifest.02cd41148da983412fe6ed361a7b6478.js": "/shopmate/precache-manifest.02cd41148da983412fe6ed361a7b6478.js",
     "service-worker.js": "/shopmate/service-worker.js",
-    "static/css/main.f6c025f8.chunk.css.map": "/shopmate/static/css/main.f6c025f8.chunk.css.map",
+    "static/css/main.186cbf94.chunk.css.map": "/shopmate/static/css/main.186cbf94.chunk.css.map",
     "static/media/modal4.png": "/shopmate/static/media/modal4.294e0636.png",
     "static/media/shoe2.png": "/shopmate/static/media/shoe2.502184ca.png"
   }
