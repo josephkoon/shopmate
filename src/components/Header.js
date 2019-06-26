@@ -57,7 +57,7 @@ class Header extends Component {
 
 
 		return(
-			<div style={{height:'49px', paddingLeft:'30px', paddingRight:'30px', display:'flex', alignItems:'center'}}>
+			<div style={{height:'42px', paddingLeft:'30px', paddingRight:'30px', display:'flex', alignItems:'center'}}>
 				<div style={{width:'15%', display:'inline-block'}}>
 					{!customerName &&
 					<span className='topbar'>Hi! 

@@ -52,6 +52,7 @@ class Register extends Component {
 		    	<HeaderNavigation/>
 
 		    	<div style={{paddingTop:'30px'}}  className='offset-4 col-4'>
+		    		<div style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
 			    	<h3>Register</h3>
 			    	
 			    	<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
@@ -76,6 +77,7 @@ class Register extends Component {
 					<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
 						<h4 className='pink'>{registrationError}</h4>
 						<h4 className='pink'>{registrationErrorField}</h4>
+					</div>
 					</div>
 				</div>
 		    </div>	

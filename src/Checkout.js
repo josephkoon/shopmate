@@ -125,7 +125,7 @@ class Checkout extends Component {
 
 
 		    	{this.state.step == 1 &&
-		    	<div>
+		    	<div style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
 			    	<h3>Delivery</h3>
 				    <div style={{padding:'15px'}}>
 					    <h3 className='light-gray'>Shipping Region</h3>
@@ -146,7 +146,7 @@ class Checkout extends Component {
 
 
 				{this.state.step == 2 &&
-				<div>
+				<div style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
 					<h3>Confirmation</h3>
 					<h3 className='light-gray'>Cart</h3>
 					<h4>{displayCart}</h4>
@@ -163,7 +163,7 @@ class Checkout extends Component {
 
 
 				{this.state.step == 3 &&
-				<div>
+				<div style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
 					<h3>Payment</h3>
 				    <div style={{padding:'15px'}}>
 						<CheckoutForm/>
@@ -173,7 +173,7 @@ class Checkout extends Component {
 
 
 				{this.state.step == 4 &&
-				<div>
+				<div style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
 					<h3>Finish</h3>
 					<button className="btn btn-sm btn-danger">Back To Shop</button>
 				</div>
