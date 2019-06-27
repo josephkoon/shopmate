@@ -90,7 +90,7 @@ class Home extends Component {
 	     				</span> 
 	     			}
 	 			</div>
-	 			<div style={{display:'inline-block', width:'60px', textAlign:'center'}}>
+	 			<div style={{display:'inline-block', width:'50px', textAlign:'center'}}>
 	 				<h4>Page {this.state.page}</h4> 
 	 			</div>
 	     		<div style={{display:'inline-block', width:'60px', textAlign:'center'}}>
@@ -122,7 +122,7 @@ class Home extends Component {
 				     		<Banner/>
 				     	</div>
 
-				     	<div style={{paddingTop:'15px'}} className='container'>
+				     	<div style={{paddingTop:'15px', paddingBottom:'15px'}} className='container'>
 				     		{pagination}
 					     	<ProductCards/>
 				     	</div>

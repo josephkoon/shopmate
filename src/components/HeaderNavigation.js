@@ -7,9 +7,7 @@ import {
 	getDepartments
 } from '../actions/index'
 
-
 import search from '../icon/icons-search-black.png'
-
 
 
 class HeaderNavigation extends Component {
@@ -36,14 +34,12 @@ class HeaderNavigation extends Component {
 			});
 		}
 
-
-
 		let inputStyle = {
-			//background:`white url(${search}) left no-repeat`,
-			//backgroundSize:'14px',
-			paddingLeft:'12px'
+			background:`white url(${search}) no-repeat`,
+			backgroundPosition: 'left 10px bottom 8px',
+			backgroundSize:'14px',
+			paddingLeft:'36px'
 		}
-
 
 
 		return(
@@ -56,20 +52,16 @@ class HeaderNavigation extends Component {
 					{departmentLabels}
 				</div>
 
-				<div style={{width:'15%', display:'inline-block', textAlign:'center'}}>
-					
+				<div style={{width:'10%'}}>
 				</div>
 
-				<div style={{width:'20%', display:'flex', textAlign:'center', justifyContent:'center'}}>
+				<div style={{width:'25%', display:'inline-block', textAlign:'right'}}>
 					<input style={inputStyle} placeholder='Search...' className='form-control'/>
 				</div>
-				
 			</div>
-
 		);
 	}
 }
-
 
 
 function mapStateToProps(state){

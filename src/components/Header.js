@@ -38,7 +38,6 @@ class Header extends Component {
 	}
 
 
-
 	shouldComponentUpdate(nextProps, nextState){
 		//When cart changes, update total
 		if(nextProps.cart !== this.props.cart){
@@ -61,7 +60,7 @@ class Header extends Component {
 		return(
 			<div style={{height:'42px', paddingLeft:'15px', paddingRight:'15px', display:'flex', alignItems:'center'}}>
 				
-				<div style={{width:'60%', display:'inline-block'}}>
+				<div style={{width:'55%', display:'inline-block'}}>
 					{!customerName &&
 					<span className='topbar'>Hi! 
 						<span onClick={this.toLogin.bind(this)} className='link pink'> Login </span> or 
@@ -72,7 +71,6 @@ class Header extends Component {
 					{customerName &&
 					<span className='topbar'>
 						Hi! 
-
 						<div className="dropdown" style={{display:'inline-block'}}>
 							<button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className='pink'><strong>{customerName}</strong></span></button>
 							<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -80,17 +78,16 @@ class Header extends Component {
 								<a onClick={this.logout.bind(this)} className="dropdown-item">Logout</a>
 							</div>
 						</div>
-
 					</span>
 					}
 				</div>
 
-				<div style={{width:'20%', display:'inline-block', textAlign:'center'}}>
+				<div style={{width:'15%', display:'inline-block', textAlign:'center'}}>
 					<img style={{width:'12px', marginTop:'-2px'}} src={flag} alt=""/>
-					<span className='topbar'> £ GBP </span>
+					<span className='topbar'>£ GBP</span>
 				</div>
 
-				<div style={{width:'20%', display:'inline-block', textAlign:'right'}}>
+				<div style={{width:'30%', display:'inline-block', textAlign:'right'}}>
 					<span onClick={this.toCart.bind(this)} className='link topbar'>
 						<img style={{width:'12px', marginTop:'-2px'}} src={bag} alt=""/>
 						<span> Your Cart : </span> 

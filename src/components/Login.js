@@ -28,7 +28,6 @@ class Login extends Component {
 		if(this.props.user){
 			this.props.history.push('/');
 		}
-		
 	}
 
 
@@ -44,17 +43,22 @@ class Login extends Component {
 
 	render(){
 
+		console.log('error', this.props)
+
 		let loginError;
+		let fieldError;
 		if(this.props.loginError){
 			loginError = this.props.loginError.message;
+			fieldError = this.props.loginError.field;
 		}
+		
 
 		return(
 		    <div>
 		    	<Header/>
 		    	<HeaderNavigation/>
 
-		    	<div style={{paddingTop:'30px'}} className='offset-4 col-4'>
+		    	<div style={{paddingTop:'45px'}} className='col-12 offset-md-4 col-md-4'>
 		    		<div className='box-shadow' style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
 			    	<h2>Login</h2>
 
@@ -73,6 +77,7 @@ class Login extends Component {
 					
 					<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
 						<h4 className='pink'>{loginError}</h4>
+						<h4 className='pink'>{fieldError}</h4>
 					</div>
 					</div>
 				</div>
@@ -98,3 +103,6 @@ const mapDispatchToProps = (dispatch) => {
 
 Login = connect(mapStateToProps, mapDispatchToProps)(Login);
 export default withRouter(Login);
+
+
+

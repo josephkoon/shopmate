@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 import shoe2 from '../images/shoe2.png'
 
+
 class BannerSub extends Component {
 	render(){
 		return(
-	     	<div style={{position:'relative', display:'flex', alignItems:'center', height:'336px'}}>
+	     	<div style={{display:'flex', alignItems:'center', height:'300px', width:'100%'}}>
 	     		<div style={{left:'0', position:'absolute', width:'100%', padding:'60px'}}>
 	     			<div>
 	     				<h1 className='white'>Converse</h1>
@@ -20,13 +21,14 @@ class BannerSub extends Component {
 	     			</div>
 	     		</div>
 
-	     		<div style={{width:'100%', height:'100%', overflow:'hidden'}}>
-	     			<img style={{width:'100%'}} src={shoe2} alt=""/>
-	     		</div>
+	     		<img style={{height:'100%', flex:'1', objectFit:'cover', overflow:'hidden'}} src={shoe2} alt=""/>
+
 	     	</div>
 		);
 	}
 }
 
 export default BannerSub;
+
+
 

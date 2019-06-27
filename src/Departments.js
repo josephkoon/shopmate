@@ -101,7 +101,7 @@ class Departments extends Component {
 		pagination = (
 			<div style={{paddingBottom:'7.5px'}}>
 				<div style={{float:'left'}}>
-					<h3 className='light-gray'>Browse {this.props.count} Items</h3>
+					<h3 className='light-gray'>Browse {this.props.count} Items in Department</h3>
 				</div>
 
 				<div style={{textAlign:'right'}}>
@@ -117,7 +117,7 @@ class Departments extends Component {
 	     				</span> 
 	     			}
 	 			</div>
-	 			<div style={{display:'inline-block', width:'60px', textAlign:'center'}}>
+	 			<div style={{display:'inline-block', width:'50px', textAlign:'center'}}>
 	 				<h4>Page {this.state.page}</h4> 
 	 			</div>
 	     		<div style={{display:'inline-block', width:'60px', textAlign:'center'}}>
@@ -144,7 +144,7 @@ class Departments extends Component {
 		    	<HeaderNavigation/>
 
 		     	<div className='background-light-gray'>
-			     	<div style={{paddingTop:'15px'}} className='container'>
+			     	<div style={{paddingTop:'15px', paddingBottom:'15px'}} className='container'>
 			     		{pagination}
 				     	<ProductCards/>
 			     	</div>

@@ -157,7 +157,9 @@ class Product extends Component {
 	     						<button onClick={() => this.addToCart(cart_id, product_id)} className="btn btn-lg btn-danger">Add to Cart</button>
 	     					}
 	     					{this.state.addedToCart &&
-	     						<h3>Added to Cart! <span onClick={this.toCart.bind(this)} className='link pink'> View Cart</span></h3>
+	     						<div style={{height:'42px'}}>
+	     							<h3>Added to Cart! <span onClick={this.toCart.bind(this)} className='link pink'> View Cart</span></h3>
+	     						</div>
 	     					}
 	     				</div>
 	     			</div>

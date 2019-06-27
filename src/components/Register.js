@@ -43,17 +43,23 @@ class Register extends Component {
 
 
 	render(){
+		
 		let registrationError
+		let fieldError;
 		if(this.props.registrationError){
 			registrationError = this.props.registrationError.message
+			fieldError = this.props.registrationError.field;
+
 		}
+
+
 
 		return(
 		    <div>
 		    	<Header/>
 		    	<HeaderNavigation/>
 
-		    	<div style={{paddingTop:'30px'}}  className='offset-4 col-4'>
+		    	<div style={{paddingTop:'45px'}} className='col-12 offset-md-4 col-md-4'>
 		    		<div className='box-shadow' style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
 			    	<h2>Register</h2>
 			    	
@@ -78,6 +84,7 @@ class Register extends Component {
 
 					<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
 						<h4 className='pink'>{registrationError}</h4>
+						<h4 className='pink'>{fieldError}</h4>
 					</div>
 					</div>
 				</div>
