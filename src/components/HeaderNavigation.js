@@ -47,8 +47,8 @@ class HeaderNavigation extends Component {
 
 
 		return(
-			<div className='background-black' style={{height:'60px', paddingLeft:'30px', paddingRight:'30px', display:'flex', alignItems:'center'}}>
-				<div style={{width:'20%', display:'inline-block'}}>
+			<div className='background-black' style={{height:'60px', paddingLeft:'15px', paddingRight:'15px', display:'flex', alignItems:'center'}}>
+				<div style={{width:'25%', display:'inline-block'}}>
 					<span onClick={this.toHome.bind(this)} className='link topbar pink' style={{fontSize:'24px', fontWeight:'500', letterSpacing:'2px'}}>SHOPMATE</span>
 				</div>
 
@@ -56,7 +56,7 @@ class HeaderNavigation extends Component {
 					{departmentLabels}
 				</div>
 
-				<div style={{width:'20%', display:'inline-block', textAlign:'center'}}>
+				<div style={{width:'15%', display:'inline-block', textAlign:'center'}}>
 					
 				</div>
 
