@@ -10,7 +10,26 @@ import {
 import search from '../icon/icons-search-black.png'
 
 
+
 class HeaderNavigation extends Component {
+	constructor(){
+		super()
+
+		this.state = {
+			department_id:null
+		}
+	}
+
+
+	componentDidUpdate(prevProps, prevState){
+
+		//Update based on url
+		if(prevProps.match !== this.props.match){
+			let department_id = this.props.match.params.id;
+			this.setState({department_id:department_id})
+		}
+	}
+
 
 	toHome(){
 		this.props.history.push('/');
@@ -21,13 +40,33 @@ class HeaderNavigation extends Component {
 	}
 
 
+	keyPress(e){
+		if(e.keyCode == 13){
+			if(e.target){
+				let query = e.target.value
+				if(!e.target.value){
+					query = "_"
+				}
+				this.props.history.push('/browse' + '/?q=' + query);
+			}
+		}
+	}
+
 	render(){
 		let departmentLabels 
 
 		if(this.props.departments.length > 0){
 			departmentLabels = this.props.departments.map(department => {
+
+				let departmentStyle
+				if(department.department_id == this.state.department_id){
+					departmentStyle = 'link topbar pink'
+				} else {
+					departmentStyle = 'link topbar white'
+				}
+
 				return (
-					<span onClick={() => this.toCatalog(department.department_id)} style={{flex:'1'}} className='link topbar white' key={department.department_id}>
+					<span onClick={() => this.toCatalog(department.department_id)} style={{flex:'1'}} className={departmentStyle} key={department.department_id}>
 						{department.name}
 					</span>
 				)
@@ -40,7 +79,6 @@ class HeaderNavigation extends Component {
 			backgroundSize:'14px',
 			paddingLeft:'36px'
 		}
-
 
 		return(
 			<div className='background-black' style={{height:'60px', paddingLeft:'15px', paddingRight:'15px', display:'flex', alignItems:'center'}}>
@@ -56,7 +94,7 @@ class HeaderNavigation extends Component {
 				</div>
 
 				<div style={{width:'25%', display:'inline-block', textAlign:'right'}}>
-					<input style={inputStyle} placeholder='Search...' className='form-control'/>
+					<input onKeyDown={this.keyPress.bind(this)} style={inputStyle} placeholder='Search...' className='form-control'/>
 				</div>
 			</div>
 		);

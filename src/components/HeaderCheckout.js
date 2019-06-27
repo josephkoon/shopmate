@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 
 class HeaderCheckout extends Component {
-
 	render(){
 		return(
 			<div className='background-dark-gray' style={{height:'60px', paddingLeft:'15px', paddingRight:'15px', display:'flex', alignItems:'center'}}>
@@ -13,6 +12,5 @@ class HeaderCheckout extends Component {
 		);
 	}
 }
-
 
 export default HeaderCheckout

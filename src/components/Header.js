@@ -13,7 +13,6 @@ import bag from '../icon/icons-bag.png'
 import flag from '../icon/gbr.png'
 
 
-
 class Header extends Component {
 
 	toProfile(){
@@ -38,24 +37,21 @@ class Header extends Component {
 	}
 
 
-	shouldComponentUpdate(nextProps, nextState){
-		//When cart changes, update total
-		if(nextProps.cart !== this.props.cart){
-			nextProps.getCartTotal(nextProps.cart_id);
-		}
 
-		return true
+
+	componentDidUpdate(prevProps, prevState){
+		//Update based on url
+		if(prevProps.cart !== this.props.cart){
+			this.props.getCartTotal(this.props.cart_id);
+		}
 	}
 
 
-
 	render(){
-
 		let customerName = "";
 		if(this.props.user){
 			customerName = this.props.user.customer.name;
 		}
-
 
 		return(
 			<div style={{height:'42px', paddingLeft:'15px', paddingRight:'15px', display:'flex', alignItems:'center'}}>
@@ -84,7 +80,7 @@ class Header extends Component {
 
 				<div style={{width:'15%', display:'inline-block', textAlign:'center'}}>
 					<img style={{width:'12px', marginTop:'-2px'}} src={flag} alt=""/>
-					<span className='topbar'>£ GBP</span>
+					<span className='topbar'> £ GBP </span>
 				</div>
 
 				<div style={{width:'30%', display:'inline-block', textAlign:'right'}}>
@@ -98,7 +94,6 @@ class Header extends Component {
 		);
 	}
 }
-
 
 
 function mapStateToProps(state){

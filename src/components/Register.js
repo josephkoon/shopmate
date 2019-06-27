@@ -49,9 +49,7 @@ class Register extends Component {
 		if(this.props.registrationError){
 			registrationError = this.props.registrationError.message
 			fieldError = this.props.registrationError.field;
-
 		}
-
 
 
 		return(

@@ -3,18 +3,14 @@ import React, { Component } from 'react';
 import email from '../icon/icons-email-black.png'
 
 
-
 class FooterNewsletter extends Component {
-
 	render(){
-
 		let inputStyle = {
 			background:`white url(${email}) no-repeat`,
 			backgroundPosition: 'left 10px bottom 8px',
 			backgroundSize:'14px',
 			paddingLeft:'36px'
 		}
-
 
 		return(
 			<div className='background-dark-gray' style={{height:'72px', paddingLeft:'30px', paddingRight:'30px', display:'flex', alignItems:'center'}}>
@@ -33,6 +29,5 @@ class FooterNewsletter extends Component {
 		);
 	}
 }
-
 
 export default FooterNewsletter;

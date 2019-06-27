@@ -66,17 +66,23 @@ class Browse extends Component {
 		// }
 
 
+
+		let pagination
+		pagination = (
+			<div style={{paddingBottom:'7.5px'}}>
+				<h3 className='light-gray'>Browse {this.props.count} Results</h3>
+ 			</div>
+		)
+
 		return(
 		    <div>
 		    	<Header/>
 		    	<HeaderNavigation/>
 
 		     	<div className='background-light-gray'>
-			     	<div style={{paddingTop:'30px'}} className='container'>
-
-			     		
+			     	<div style={{minHeight:'100vh', paddingTop:'15px', paddingBottom:'15px'}} className='container'>
+						{pagination}
 				     	<ProductCards/>
-
 			     	</div>
 		     	</div>
 		     	

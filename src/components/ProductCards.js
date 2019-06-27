@@ -10,7 +10,6 @@ class ProductCards extends Component {
 		this.props.history.push('/product/'+parameter)
 	}
 
-
 	render(){
 		let productCards
 
@@ -41,7 +40,6 @@ class ProductCards extends Component {
 				)
 			})
 		}
-
 
 		return(
 	     	<div className='row'>

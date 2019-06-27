@@ -37,9 +37,35 @@ class Product extends Component {
 
 		let productID = this.props.match.params.id
 
-		this.props.getProduct(productID);
-		this.props.getProductReviews(productID);
-		this.props.getProductAttributes(productID);
+		await this.props.getProduct(productID);
+		await this.props.getProductReviews(productID);
+		await this.props.getProductAttributes(productID);
+
+
+		console.log(this.props.attributes)
+
+		if(this.props.attributes.length > 0){
+			let attributes = this.props.attributes;
+			let initialColor
+			for(let i=0; i<attributes.length; i++){
+				if(attributes[i].attribute_name == 'Color'){
+					initialColor = attributes[i].attribute_value
+					break
+				}
+			}
+
+			let initialSize
+			for(let i=0; i<attributes.length; i++){
+				if(attributes[i].attribute_name == 'Size'){
+					initialSize = attributes[i].attribute_value
+					break
+				}
+			}
+
+			this.setState({selectedSize:initialSize, selectedColor:initialColor})
+		}
+
+
 	}
 
 
@@ -81,9 +107,9 @@ class Product extends Component {
 	render(){
 		let product
 
+		console.log(this.state)
 
 		if(this.props.product){
-
 			let image= "https://backendapi.turing.com/images/products/" + this.props.product.image
 			let image2= "https://backendapi.turing.com/images/products/" + this.props.product.image_2
 			let product_id = this.props.product.product_id
@@ -117,13 +143,12 @@ class Product extends Component {
 			})
 
 
-
 			product = (
 	     		<div className='row'>
 
 	     			<div className='col-6 text-center'>
 	     				<div>
-	     					<img src={image} style={{margin:'15px', width:'50%'}} alt=""/>
+	     					<img src={image} style={{margin:'15px', width:'60%'}} alt=""/>
 	     				</div>
 	     				<div>
 	     					<img src={image} className='thumbnail-crop' alt=""/>

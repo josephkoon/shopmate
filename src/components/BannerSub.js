@@ -22,7 +22,6 @@ class BannerSub extends Component {
 	     		</div>
 
 	     		<img style={{height:'100%', flex:'1', objectFit:'cover', overflow:'hidden'}} src={shoe2} alt=""/>
-
 	     	</div>
 		);
 	}

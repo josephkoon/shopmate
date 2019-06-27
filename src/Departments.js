@@ -144,7 +144,7 @@ class Departments extends Component {
 		    	<HeaderNavigation/>
 
 		     	<div className='background-light-gray'>
-			     	<div style={{paddingTop:'15px', paddingBottom:'15px'}} className='container'>
+			     	<div style={{minHeight:'100vh',paddingTop:'15px', paddingBottom:'15px'}} className='container'>
 			     		{pagination}
 				     	<ProductCards/>
 			     	</div>

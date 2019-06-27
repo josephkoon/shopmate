@@ -81,7 +81,7 @@ class Cart extends Component {
 		    	<div style={{paddingTop:'30px'}} className='offset-1 col-10'>
 			     	<h2>{this.props.cart.length} Items In Cart</h2>
 
-			     	<div style={{paddingTop:'30px', paddingBottom:'30px'}}>
+			     	<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
 					<table className="table table-borderless" >
 						<thead style={{borderTop:'1px solid lightgray', borderBottom:'1px solid lightgray'}}>
 							<tr className="d-flex">
@@ -103,7 +103,7 @@ class Cart extends Component {
 							<button onClick={this.toCheckout.bind(this)} className='float-left btn btn-lg btn-danger'>Checkout</button>
 						}
 						{!this.props.user &&
-							<h3 className='float-left'><span className='link pink' onClick={this.toLogin.bind(this)}>Login </span> to Checkout</h3>
+							<h2 className='float-left'><span className='link pink' onClick={this.toLogin.bind(this)}>Login </span> to Checkout</h2>
 						}
 
 						{this.props.cart.length > 0 &&
