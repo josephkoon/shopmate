@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/shopmate/static/css/main.879b34cf.chunk.css",
-    "main.js": "/shopmate/static/js/main.19d1caf5.chunk.js",
-    "main.js.map": "/shopmate/static/js/main.19d1caf5.chunk.js.map",
+    "main.css": "/shopmate/static/css/main.4b8d45cf.chunk.css",
+    "main.js": "/shopmate/static/js/main.28285d39.chunk.js",
+    "main.js.map": "/shopmate/static/js/main.28285d39.chunk.js.map",
     "runtime~main.js": "/shopmate/static/js/runtime~main.03f445c5.js",
     "runtime~main.js.map": "/shopmate/static/js/runtime~main.03f445c5.js.map",
-    "static/js/2.9ee78d0f.chunk.js": "/shopmate/static/js/2.9ee78d0f.chunk.js",
-    "static/js/2.9ee78d0f.chunk.js.map": "/shopmate/static/js/2.9ee78d0f.chunk.js.map",
+    "static/js/2.d801738c.chunk.js": "/shopmate/static/js/2.d801738c.chunk.js",
+    "static/js/2.d801738c.chunk.js.map": "/shopmate/static/js/2.d801738c.chunk.js.map",
     "index.html": "/shopmate/index.html",
-    "precache-manifest.7845ca320f77990e9f96ee1b9b0d803d.js": "/shopmate/precache-manifest.7845ca320f77990e9f96ee1b9b0d803d.js",
+    "precache-manifest.81565a693df63610b6d832db874f9fb6.js": "/shopmate/precache-manifest.81565a693df63610b6d832db874f9fb6.js",
     "service-worker.js": "/shopmate/service-worker.js",
-    "static/css/main.879b34cf.chunk.css.map": "/shopmate/static/css/main.879b34cf.chunk.css.map",
+    "static/css/main.4b8d45cf.chunk.css.map": "/shopmate/static/css/main.4b8d45cf.chunk.css.map",
     "static/media/modal4.png": "/shopmate/static/media/modal4.294e0636.png",
     "static/media/shoe2.png": "/shopmate/static/media/shoe2.502184ca.png"
   }
