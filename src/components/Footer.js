@@ -36,16 +36,16 @@ class Footer extends Component {
 		
 				<div style={{margin:'auto', width:'20%', paddingTop:'15px', paddingBottom:'15px', display:'flex', justifyContent:'space-around'}}>
 					<span className='topbar dark-gray' style={{flex:'1'}}>
-						<img style={{width:'24px'}} src={instagram}/> 
+						<img style={{width:'24px'}} src={instagram} alt=""/> 
 					</span>
 					<span className='topbar dark-gray' style={{flex:'1'}}>
-						<img style={{width:'24px'}} src={pinterest}/> 
+						<img style={{width:'24px'}} src={pinterest} alt=""/> 
 					</span>
 					<span className='topbar dark-gray' style={{flex:'1'}}>
-						<img style={{width:'24px'}} src={twitter}/> 
+						<img style={{width:'24px'}} src={twitter} alt=""/> 
 					</span>
 					<span className='topbar dark-gray' style={{flex:'1'}}>
-						<img style={{width:'24px'}} src={facebook}/> 
+						<img style={{width:'24px'}} src={facebook} alt=""/> 
 					</span>
 				</div>
 

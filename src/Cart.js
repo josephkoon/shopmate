@@ -107,7 +107,7 @@ class Cart extends Component {
 						}
 
 						{this.props.cart.length > 0 &&
-							<h3 className='float-right'><span className='link pink' onClick={this.emptyCart.bind(this)}>EMPTY CART</span></h3>
+							<h4 className='float-right'><span className='link pink' onClick={this.emptyCart.bind(this)}>EMPTY CART</span></h4>
 						}
 					</div>
 

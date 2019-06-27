@@ -27,6 +27,7 @@ class Product extends Component {
 		this.state = {
 			selectedSize:'',
 			selectedColor:'',
+			addedToCart:false,
 		}
 	}
 
@@ -67,6 +68,12 @@ class Product extends Component {
 
 		//NEEDS ATTRIBUTES
 		this.props.addToCart(cart_id, product_id, attributes)
+		this.setState({addedToCart:true})
+	}
+
+
+	toCart(parameter){
+		this.props.history.push('/cart');
 	}
 
 
@@ -77,11 +84,8 @@ class Product extends Component {
 
 		if(this.props.product){
 
-			console.log('product', this.props.product)
-
 			let image= "https://backendapi.turing.com/images/products/" + this.props.product.image
 			let image2= "https://backendapi.turing.com/images/products/" + this.props.product.image_2
-
 			let product_id = this.props.product.product_id
 			let cart_id = this.props.cart_id
 			let attributes = this.props.attributes;
@@ -111,7 +115,6 @@ class Product extends Component {
 					<option value={size.attribute_value} key={size.attribute_value_id} className="dropdown-item">{size.attribute_value}</option>
 				)
 			})
-
 
 
 
@@ -150,7 +153,12 @@ class Product extends Component {
 						</div>
 
 	     				<div style={{padding:'15px'}}>
-	     					<button onClick={() => this.addToCart(cart_id, product_id)} className="btn btn-lg btn-danger">Add to Cart</button>
+	     					{!this.state.addedToCart &&
+	     						<button onClick={() => this.addToCart(cart_id, product_id)} className="btn btn-lg btn-danger">Add to Cart</button>
+	     					}
+	     					{this.state.addedToCart &&
+	     						<h3>Added to Cart! <span onClick={this.toCart.bind(this)} className='link pink'> View Cart</span></h3>
+	     					}
 	     				</div>
 	     			</div>
 		     	</div>
@@ -164,7 +172,7 @@ class Product extends Component {
 
 				let stars = []
 				for(let i=0; i<review.rating; i++){
-					stars.push(<img key={uuidv4()} style={{width:'12px'}} src={starGold}/>)
+					stars.push(<img key={uuidv4()} style={{width:'12px'}} src={starGold} alt=""/>)
 				}
 
 				return (

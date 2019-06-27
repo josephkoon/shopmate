@@ -17,7 +17,6 @@ export const SEARCH_PRODUCTS = 'search_products';
 export const SETUP_CART = 'setup_cart';
 export const GET_CART = 'get_cart';
 export const GET_CART_TOTAL = 'get_cart_total';
-export const ADD_TO_CART = 'add_to_cart';
 export const EMPTY_CART = 'empty_cart';
 
 export const GET_SHIPPING_REGIONS = 'get_shipping_regions';

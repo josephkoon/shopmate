@@ -11,7 +11,6 @@ export default function(state={products:[], count:null, product:null, attributes
 
 
 	case GET_PRODUCTS:
-	console.log('products', action.payload)
 		return {...state, products:action.payload.rows, count:action.payload.count};
 
 	case GET_PRODUCT:

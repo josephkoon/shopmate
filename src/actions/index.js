@@ -19,7 +19,6 @@ import {
 	SETUP_CART,
 	GET_CART,
 	GET_CART_TOTAL,
-	ADD_TO_CART,
 	EMPTY_CART,
 
 	GET_SHIPPING_REGIONS,
@@ -217,7 +216,7 @@ export function emptyCart(cart_id){
 	return async function(dispatch){
 		try {
 		
-			const cart = await axios.delete(ROOT_URL+'/shoppingcart/empty/'+cart_id);
+			await axios.delete(ROOT_URL+'/shoppingcart/empty/'+cart_id);
 
 			return dispatch(empty_Cart());
 
@@ -543,7 +542,7 @@ export function getCategories(){
 
 			const categories = await axios.get(ROOT_URL+'/categories');
 
-			let count = categories.data.count
+			//let count = categories.data.count
 			let rows = categories.data.rows
 
 			return dispatch(get_Categories(rows));

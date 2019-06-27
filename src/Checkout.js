@@ -47,16 +47,17 @@ class Checkout extends Component {
 		this.setState({step:2})
 	}
 
+
 	stepThree(){
 		let cart_id = this.props.cart_id;
 		let shipping_id = this.state.selectedShipping;
 		let tax_id = this.state.selectedTax.tax_id;
-
 		let token
+
 		if(this.props.user){
 			token = this.props.user.accessToken
-
 			this.props.createOrder(cart_id, shipping_id, tax_id, token)
+
 			this.setState({step:3})
 		}
 	}
@@ -66,11 +67,13 @@ class Checkout extends Component {
 	selectRegionOption(e){
 		let value = e.target.value
 		this.props.getShippingOptions(value)
+
 		this.setState({selectedRegion:value});
 	}
 
 	selectShippingOption(e){
 		let value = e.target.value
+
 		this.setState({selectedShipping:value});
 	}
 
@@ -95,7 +98,7 @@ class Checkout extends Component {
 		if(this.props.options.length > 0){
 			options = this.props.options.map(option => {
 				return (
-					<option value={option.shipping_id} key={option.shipping_id} className="dropdown-item">{option.shipping_type} - {option.shipping_cost}</option>
+					<option value={option.shipping_id} key={option.shipping_id} className="dropdown-item">{option.shipping_type}</option>
 				)
 			})
 		}
@@ -106,14 +109,20 @@ class Checkout extends Component {
 			displayTax = this.state.selectedTax.tax_type;
 		}
 
-		let displayCart = ""
-		if(this.props.cart_id){
-			displayCart = this.props.cart_id;
+
+		let displayCartTotal = ""
+		if(this.props.total){
+			displayCartTotal = this.props.total;
 		}
+
 
 		let displayShipping = ""
 		if(this.state.selectedShipping){
-			displayShipping = this.state.selectedShipping;
+			for(let i=0; i<this.props.options.length; i++){
+				if(this.state.selectedShipping == this.props.options[i].shipping_id){
+					displayShipping = this.props.options[i].shipping_type
+				}
+			}
 		}
 
 
@@ -125,9 +134,11 @@ class Checkout extends Component {
 		    <div style={{paddingTop:'30px'}} className='row'>
 		    <div className='col-4 offset-4'>
 
+
 		    	{this.state.step == 1 &&
 		    	<div style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
 			    	<h3>Delivery</h3>
+
 				    <div style={{padding:'15px'}}>
 					    <h3 className='light-gray'>Shipping Region</h3>
 						<select value={this.state.selectedRegion} onChange={this.selectRegionOption.bind(this)} className="form-control">
@@ -135,13 +146,21 @@ class Checkout extends Component {
 						</select>
 					</div>
 
+					{this.state.selectedRegion &&
 				    <div style={{padding:'15px'}}>
 					    <h3 className='light-gray'>Delivery Options</h3>
 						<select value={this.state.selectedOption} onChange={this.selectShippingOption.bind(this)} className="form-control">
 							{options}
 						</select>
 					</div>
+					}
+
+					{!this.state.selectedShipping &&
+					<span>Select a Region/Shipping Option to Continue</span>
+					}
+					{this.state.selectedShipping &&
 					<button onClick={this.stepTwo.bind(this)} className="btn btn-sm btn-danger">Next Step</button>
+					}
 				</div>
 				}
 
@@ -149,8 +168,8 @@ class Checkout extends Component {
 				{this.state.step == 2 &&
 				<div style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
 					<h3>Confirmation</h3>
-					<h3 className='light-gray'>Cart</h3>
-					<h4>{displayCart}</h4>
+					<h3 className='light-gray'>Cart Total</h3>
+					<h4>{displayCartTotal}</h4>
 
 					<h3 className='light-gray'>Tax</h3>
 					<h4>{displayTax}</h4>
@@ -180,10 +199,8 @@ class Checkout extends Component {
 				</div>
 				}
 
-
 			</div>
 		    </div>
-
 		    </div>
 		)
 	}
@@ -192,6 +209,7 @@ class Checkout extends Component {
 
 function mapStateToProps(state){
 	return { 	
+		total:state.cart.total,
 		cart_id:state.cart.cart_id,
 		regions:state.orders.regions,
 		options:state.orders.options,
