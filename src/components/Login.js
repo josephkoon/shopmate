@@ -45,10 +45,8 @@ class Login extends Component {
 	render(){
 
 		let loginError;
-		let loginErrorField;
 		if(this.props.loginError){
 			loginError = this.props.loginError.message;
-			loginErrorField = this.props.loginError.field;
 		}
 
 		return(
@@ -75,7 +73,6 @@ class Login extends Component {
 					
 					<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
 						<h4 className='pink'>{loginError}</h4>
-						<h4 className='pink'>{loginErrorField}</h4>
 					</div>
 					</div>
 				</div>

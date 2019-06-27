@@ -23,8 +23,12 @@ class Register extends Component {
 	}
 
 
-	login(){
-		this.props.register(this.state.name, this.state.email, this.state.password)
+	async register(){
+		await this.props.register(this.state.name, this.state.email, this.state.password)
+
+		if(this.props.user){
+			this.props.history.push('/');
+		}
 	}
 
 
@@ -40,10 +44,8 @@ class Register extends Component {
 
 	render(){
 		let registrationError
-		let registrationErrorField
 		if(this.props.registrationError){
 			registrationError = this.props.registrationError.message
-			registrationErrorField = this.props.registrationError.field
 		}
 
 		return(
@@ -72,11 +74,10 @@ class Register extends Component {
 						</div>
 					</div>
 
-					<button onClick={this.login.bind(this)} className="btn btn-sm btn-danger">Register</button>
+					<button onClick={this.register.bind(this)} className="btn btn-sm btn-danger">Register</button>
 
 					<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
 						<h4 className='pink'>{registrationError}</h4>
-						<h4 className='pink'>{registrationErrorField}</h4>
 					</div>
 					</div>
 				</div>

@@ -21,7 +21,7 @@ class Departments extends Component {
 		super()
 
 		this.state = {
-	
+			page:1
 		}
 	}
 
@@ -57,6 +57,7 @@ class Departments extends Component {
 		     	<div className='background-light-gray'>
 			     	<div style={{paddingTop:'15px'}} className='container-fluid'>
 			     	<div className='row'>
+			     	
 				     	<div className='col-3'>
 				     		<FilterCategory/>
 				     	</div>
@@ -64,6 +65,7 @@ class Departments extends Component {
 				     	<div className='col-9'>
 				     		<ProductCards/>
 				     	</div>
+
 			     	</div>
 			     	</div>
 		     	</div>
@@ -78,7 +80,7 @@ class Departments extends Component {
 function mapStateToProps(state){
 	return { 
 
-	};
+	};	
 }
 
 const mapDispatchToProps = (dispatch) => {

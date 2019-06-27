@@ -76,7 +76,12 @@ class Product extends Component {
 
 
 		if(this.props.product){
+
+			console.log('product', this.props.product)
+
 			let image= "https://backendapi.turing.com/images/products/" + this.props.product.image
+			let image2= "https://backendapi.turing.com/images/products/" + this.props.product.image_2
+
 			let product_id = this.props.product.product_id
 			let cart_id = this.props.cart_id
 			let attributes = this.props.attributes;
@@ -109,10 +114,18 @@ class Product extends Component {
 
 
 
+
 			product = (
 	     		<div className='row'>
+
 	     			<div className='col-6 text-center'>
-	     				<img src={image} style={{width:'60%'}} alt=""/>
+	     				<div>
+	     					<img src={image} style={{margin:'15px', width:'50%'}} alt=""/>
+	     				</div>
+	     				<div>
+	     					<img src={image} className='thumbnail-crop' alt=""/>
+	     					<img src={image2} className='thumbnail-crop' alt=""/>
+	     				</div>
 	     			</div>
 
 	     			<div className='col-6'>

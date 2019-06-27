@@ -14,7 +14,7 @@ class Filter extends Component {
 		return(
 	     	<div className='bottom-shadow' style={{backgroundColor:'white'}}>
 	     		<div style={{padding:'15px', backgroundColor:'rgb(252,252,252)'}}>
-		     		<h3>Filter 486 Items</h3>
+		     		<h3>Filter {this.props.count} Items</h3>
 	     		</div>
 
 	     		<div style={{padding:'15px'}}>
@@ -41,7 +41,7 @@ class Filter extends Component {
 
 function mapStateToProps(state){
 	return { 
-
+		count:state.products.count
 	};
 }
 

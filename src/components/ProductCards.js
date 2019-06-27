@@ -25,8 +25,12 @@ class ProductCards extends Component {
 								<img style={{height:'80%'}} src={thumbnail} alt=""/>
 							</div>
 					
-							<div style={{height:'20%', display:'flex', alignItems:'center', justifyContent:'center'}}>
+							<div style={{height:'10%', display:'flex', alignItems:'center', justifyContent:'center'}}>
 								<h3>{product.name}</h3>
+							</div>
+
+							<div style={{height:'10%', display:'flex', alignItems:'center', justifyContent:'center'}}>
+								<h4 className='light-gray'>£{product.price}</h4>
 							</div>
 
 							<div style={{height:'20%', display:'flex', alignItems:'center', justifyContent:'center'}}>

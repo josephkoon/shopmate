@@ -8,6 +8,17 @@ body {
 }
 
 
+.thumbnail-crop{
+  object-fit: cover;
+  width:80px;
+  height:80px;
+  margin:15px;
+}
+
+.thumbnail-crop:hover{
+  border:1px solid #F62F5E;
+}
+
 
 h1{
   font-family:'Playfair Display', serif;

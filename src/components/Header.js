@@ -61,7 +61,7 @@ class Header extends Component {
 		return(
 			<div style={{height:'42px', paddingLeft:'15px', paddingRight:'15px', display:'flex', alignItems:'center'}}>
 				
-				<div style={{width:'20%', display:'inline-block'}}>
+				<div style={{width:'70%', display:'inline-block'}}>
 					{!customerName &&
 					<span className='topbar'>Hi! 
 						<span onClick={this.toLogin.bind(this)} className='link pink'> Login </span> or 
@@ -83,10 +83,6 @@ class Header extends Component {
 
 					</span>
 					}
-				</div>
-
-				<div style={{width:'50%'}}>
-			
 				</div>
 
 				<div style={{width:'15%', display:'inline-block', textAlign:'center'}}>

@@ -42,7 +42,7 @@ export function register(name, email, password){
 
 			const user = await axios.post(ROOT_URL+'/customers', {name:name, email: email, password: password});
 
-			console.log('user', user)
+			return dispatch(set_User(user.data));
 
 		} catch(error){
 			//If server returns error, show response
@@ -297,10 +297,10 @@ export function getProducts(){
 
 			const products = await axios.get(ROOT_URL+'/products');
 
-			let count = products.data.count
-			let rows = products.data.rows
+			//let count = products.data.count
+			//let rows = products.data.rows
 
-			return dispatch(get_Products(rows));
+			return dispatch(get_Products(products.data));
 
 		} catch(error){
 			//If server returns error, show response
@@ -319,7 +319,7 @@ export function getProducts(){
 
 
 
-export function getProductsInDepartment(id){
+export function getProductsInDepartment(id, page){
 	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
@@ -330,10 +330,10 @@ export function getProductsInDepartment(id){
 
 			const products = await axios.get(ROOT_URL+'/products/inDepartment/'+id);
 
-			let count = products.data.count
-			let rows = products.data.rows
+			//let count = products.data.count
+			//let rows = products.data.rows
 
-			return dispatch(get_Products(rows));
+			return dispatch(get_Products(products.data));
 
 		} catch(error){
 			//If server returns error, show response
@@ -363,10 +363,10 @@ export function getProductsInCategory(id){
 
 			const products = await axios.get(ROOT_URL+'/products/inCategory/'+id);
 
-			let count = products.data.count
-			let rows = products.data.rows
+			//let count = products.data.count
+			//let rows = products.data.rows
 
-			return dispatch(get_Products(rows));
+			return dispatch(get_Products(products.data));
 
 		} catch(error){
 			//If server returns error, show response

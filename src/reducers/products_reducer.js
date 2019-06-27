@@ -6,12 +6,13 @@ import {
 } from '../actions/types';
 
 
-export default function(state={products:[], product:null, attributes:[], reviews:[]}, action){
+export default function(state={products:[], count:null, product:null, attributes:[], reviews:[]}, action){
 	switch(action.type){
 
 
 	case GET_PRODUCTS:
-		return {...state, products:action.payload};
+	console.log('products', action.payload)
+		return {...state, products:action.payload.rows, count:action.payload.count};
 
 	case GET_PRODUCT:
 		return {...state, product:action.payload};

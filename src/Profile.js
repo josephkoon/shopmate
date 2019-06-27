@@ -24,7 +24,6 @@ class Profile extends Component {
 	}
 
 
-
 	componentDidMount(){
 		let email = ""
 		let name = ""
@@ -33,7 +32,6 @@ class Profile extends Component {
 			email = this.props.user.customer.email || ""
 			name = this.props.user.customer.name || ""
 		}
-
 
 		this.setState({name, email})
 	}
@@ -44,19 +42,12 @@ class Profile extends Component {
 		this.props.updateCustomer(this.state.name, this.state.email, token)
 	}
 
-	updateCustomerAddress(){
-		let token = this.props.user.accessToken
-		this.props.updateCustomerAddress(token)
-	}
-
-
 
 	render(){
 		let user
 		let profile
 
-		console.log(this.props.user)
-		
+
 		if(this.props.user){
 			user = this.props.user.customer
 			profile = (
@@ -81,21 +72,6 @@ class Profile extends Component {
 
 							<div style={{padding:'15px'}}>
 								<button onClick={this.updateCustomer.bind(this)} className='btn btn-light btn-default'>Update Information</button>
-							</div>
-
-							<hr/>
-
-							<h3>Address Information</h3>
-							<div style={{padding:'15px'}}>
-								<h4>Address 1 - {user.address_1}</h4>
-								<h4>Address 2 - {user.address_2}</h4>
-								<h4>City - {user.city}</h4>
-								<h4>Zipcode - {user.postal_code}</h4>
-								<h4>Region - {user.region}</h4>
-								<h4>Region ID - {user.shipping_region_id}</h4>
-							</div>
-							<div style={{padding:'15px'}}>
-								<button onClick={this.updateCustomerAddress.bind(this)} className='btn btn-light btn-default'>Update Address</button>
 							</div>
 
 						</div>

@@ -43,7 +43,6 @@ class Checkout extends Component {
 
 
 
-
 	stepTwo(){
 		this.setState({step:2})
 	}

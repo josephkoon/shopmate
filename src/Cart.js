@@ -22,6 +22,10 @@ class Cart extends Component {
 		}
 	}
 
+	componentDidMount(){
+		window.scrollTo(0, 0)
+	}
+
 
 	toCheckout(parameter){
 		this.props.history.push('/checkout')
@@ -30,13 +34,6 @@ class Cart extends Component {
 	toLogin(parameter){
 		this.props.history.push('/login')
 	}
-
-
-
-	componentDidMount(){
-		window.scrollTo(0, 0)
-	}
-
 
 
 	emptyCart(){
