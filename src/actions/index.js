@@ -285,7 +285,7 @@ export function get_CartTotal(total){
 
 
 
-export function getProducts(){
+export function getProducts(page){
 	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
@@ -294,7 +294,12 @@ export function getProducts(){
 			//limit - defaults to 20
 			//description_length - defaults to 200
 
-			const products = await axios.get(ROOT_URL+'/products');
+			let parameter = ""
+			if(page){
+				parameter = '/?page=' + page
+			}
+
+			const products = await axios.get(ROOT_URL+'/products' + parameter);
 
 			//let count = products.data.count
 			//let rows = products.data.rows
@@ -327,7 +332,12 @@ export function getProductsInDepartment(id, page){
 			//limit - defaults to 20
 			//description_length - defaults to 200
 
-			const products = await axios.get(ROOT_URL+'/products/inDepartment/'+id);
+			let parameter = ""
+			if(page){
+				parameter = '/?page=' + page
+			}
+
+			const products = await axios.get(ROOT_URL+'/products/inDepartment/'+id + parameter);
 
 			//let count = products.data.count
 			//let rows = products.data.rows
@@ -381,12 +391,53 @@ export function getProductsInCategory(id){
 	};
 }
 
+
+
+
+
+export function searchProducts(query){
+	//dispatch any actions with redux thunk
+	return async function(dispatch){
+		try {
+
+			//query_string - to search
+			//all_words - all words on/off
+			//page - defauls to 1
+			//limit - defaults to 20
+			//description_length - defaults to 200
+
+			const products = await axios.get(ROOT_URL+"/products/search?query_string=" + query);
+
+			console.log('products', products)
+
+			return dispatch(get_Products(products.data));
+
+		} catch(error){
+			//If server returns error, show response
+			if(error.response){
+				if(error.response.data){
+					console.log('ERROR')
+				}
+			//For other types of error, just display error
+			} else if(error){
+				console.log('ERROR')
+			}
+		}
+	};
+}
+
+
+
+
+
 export function get_Products(products){
 	return {
 		type:GET_PRODUCTS,
 		payload:products
 	};
 }
+
+
 
 
 
@@ -490,41 +541,7 @@ export function get_ProductAttributes(attributes){
 
 
 
-export function searchProducts(query){
-	//dispatch any actions with redux thunk
-	return async function(dispatch){
-		try {
 
-			//query_string - to search
-			//all_words - all words on/off
-			//page - defauls to 1
-			//limit - defaults to 20
-			//description_length - defaults to 200
-
-			const products = await axios.get(ROOT_URL+"/products/search?query_string=" + query);
-
-			return dispatch(search_Products(products.data));
-
-		} catch(error){
-			//If server returns error, show response
-			if(error.response){
-				if(error.response.data){
-					console.log('ERROR')
-				}
-			//For other types of error, just display error
-			} else if(error){
-				console.log('ERROR')
-			}
-		}
-	};
-}
-
-export function search_Products(products){
-	return {
-		type:SEARCH_PRODUCTS,
-		payload:products
-	};
-}
 
 
 

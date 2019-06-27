@@ -12,10 +12,11 @@ import Footer from './components/Footer'
 import ProductCards from './components/ProductCards'
 import FooterNewsletter from './components/FooterNewsletter'
 
+import back from './icon/icons-back-big-white.png'
+import forward from './icon/icons-forward-big-white.png'
 
 import { 
 	getProducts,
-	getCategories,
 } from './actions/index';
 
 
@@ -25,7 +26,8 @@ class Home extends Component {
 		super()
 
 		this.state = {
-			shouldRender:false
+			shouldRender:false,
+			page:1
 		}
 	}
 
@@ -34,14 +36,81 @@ class Home extends Component {
 		window.scrollTo(0, 0);
 		
 		await this.props.getProducts();
-		await this.props.getCategories();
-
 		this.setState({shouldRender:true});
+	}
+
+
+	async nextPage(){
+		let nextPage = this.state.page + 1
+
+		await this.props.getProducts(nextPage);
+		this.setState({page:nextPage})
+	}
+
+
+	async prevPage(){
+		let prevPage = this.state.page - 1
+
+		await this.props.getProducts(prevPage);
+		this.setState({page:prevPage})
 	}
 
 
 
 	render(){
+
+		let showNext = true
+		if(this.state.page*20 > this.props.count){
+			showNext = false
+		}
+
+		let showPrev = false
+		if(this.state.page > 1){
+			showPrev = true
+		}
+
+
+		let pagination
+		pagination = (
+			<div style={{paddingBottom:'7.5px'}}>
+				<div style={{float:'left'}}>
+					<h3 className='light-gray'>Browse {this.props.count} Items</h3>
+				</div>
+
+				<div style={{textAlign:'right'}}>
+	     		<div style={{display:'inline-block', width:'60px', textAlign:'center'}}>
+		     		{showPrev &&
+	     				<span onClick={this.prevPage.bind(this)} style={{cursor:'pointer', height:'60px', width:'60px'}}>
+	     					<img style={{width:'32px', backgroundColor:'#2E2E2E', borderRadius:'50%'}} src={back} alt=""/> 
+	     				</span> 
+	     			}
+		     		{!showPrev &&
+	     				<span style={{height:'60px', width:'60px'}}>
+	     					<img style={{width:'32px', backgroundColor:'lightgray', borderRadius:'50%'}} src={back} alt=""/> 
+	     				</span> 
+	     			}
+	 			</div>
+	 			<div style={{display:'inline-block', width:'60px', textAlign:'center'}}>
+	 				<h4>Page {this.state.page}</h4> 
+	 			</div>
+	     		<div style={{display:'inline-block', width:'60px', textAlign:'center'}}>
+		     		{showNext &&
+	     				<span onClick={this.nextPage.bind(this)} style={{cursor:'pointer', height:'60px', width:'60px'}}>
+	     					<img style={{width:'32px', backgroundColor:'#2E2E2E', borderRadius:'50%'}} src={forward} alt=""/> 
+	     				</span> 
+	     			}
+	     			{!showNext &&
+	     				<span style={{height:'60px', width:'60px'}}>
+	     					<img style={{width:'32px', backgroundColor:'lightgray', borderRadius:'50%'}} src={forward} alt=""/> 
+	     				</span> 
+	     			}
+	 			</div>
+	 			</div>
+ 			</div>
+		)
+
+
+
 		if(this.state.shouldRender){
 			return(
 			    <div>
@@ -53,16 +122,9 @@ class Home extends Component {
 				     		<Banner/>
 				     	</div>
 
-				     	<div style={{paddingTop:'15px'}} className='container-fluid'>
-				     	<div className='row'>
-					     	<div className='col-3'>
-					     		<Filter/>
-					     	</div>
-
-					     	<div className='col-9'>
-					     		<ProductCards/>
-					     	</div>
-				     	</div>
+				     	<div style={{paddingTop:'15px'}} className='container'>
+				     		{pagination}
+					     	<ProductCards/>
 				     	</div>
 				     
 				     	<div style={{paddingBottom:'15px'}} className='container-fluid'>
@@ -85,14 +147,13 @@ class Home extends Component {
 
 function mapStateToProps(state){
 	return { 
-
+		count:state.products.count,
 	};
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({
 		getProducts:getProducts,
-		getCategories:getCategories,
 	}, dispatch);
 };
 

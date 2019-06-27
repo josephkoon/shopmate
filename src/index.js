@@ -7,10 +7,13 @@ import Departments from './Departments';
 import Profile from './Profile';
 import Cart from './Cart';
 import Checkout from './Checkout';
+import Browse from './Browse';
 
 import Product from './components/Product';
 import Register from './components/Register';
 import Login from './components/Login';
+
+
 
 import * as serviceWorker from './serviceWorker';
 
@@ -23,6 +26,7 @@ import reducers from './reducers';
 import { 
 	setupCart,
 	getDepartments,
+	getCategories,
 } from './actions/index';
 
 
@@ -33,6 +37,7 @@ const store = createStoreWithMiddleware(reducers);
 //Setup Cart
 store.dispatch(setupCart())
 store.dispatch(getDepartments())
+store.dispatch(getCategories())
 
 
 
@@ -50,6 +55,8 @@ ReactDOM.render(
 			<Route path='/cart' component={Cart}/>
 
 			<Route path='/checkout' component={Checkout}/>
+
+			<Route path='/browse' component={Browse}/>
 		</HashRouter>
 	</Provider>
 , document.getElementById('root'));
