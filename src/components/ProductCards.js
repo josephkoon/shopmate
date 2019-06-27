@@ -21,15 +21,15 @@ class ProductCards extends Component {
 				return (
 					<div key={product.product_id} className='col-4 text-center link' style={{paddingLeft:'0px', marginBottom:'15px'}} >
 						<div onClick={()=>this.toProduct(product.product_id)} className='card-shadow' style={{backgroundColor:'white', height:'320px', padding:'15px'}}>
-							<div style={{height:'70%', display:'flex', alignItems:'center', justifyContent:'center'}}>
-								<img style={{height:'50%'}} src={thumbnail} alt=""/>
+							<div style={{height:'60%', display:'flex', alignItems:'center', justifyContent:'center'}}>
+								<img style={{height:'80%'}} src={thumbnail} alt=""/>
 							</div>
 					
-							<div style={{height:'15%', display:'flex', alignItems:'center', justifyContent:'center'}}>
+							<div style={{height:'20%', display:'flex', alignItems:'center', justifyContent:'center'}}>
 								<h3>{product.name}</h3>
 							</div>
 
-							<div style={{height:'15%', display:'flex', alignItems:'center', justifyContent:'center'}}>
+							<div style={{height:'20%', display:'flex', alignItems:'center', justifyContent:'center'}}>
 								<button className='btn btn-sm btn-danger'>Buy Now</button>
 							</div>
 						</div>

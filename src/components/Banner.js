@@ -26,7 +26,7 @@ class Banner extends Component {
 		}
 
 		return(
-	     	<div style={{position:'relative', display:'flex', alignItems:'center', height:'300px'}}>
+	     	<div style={{position:'relative', display:'flex', alignItems:'center', height:'280px'}}>
 	     		<div style={{left:'0', position:'absolute', width:'100%', padding:'60px'}}>
 	     			<div>
 	     				<h1>Mens wear</h1>

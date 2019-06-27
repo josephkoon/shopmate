@@ -52,15 +52,15 @@ class HeaderNavigation extends Component {
 					<span onClick={this.toHome.bind(this)} className='link topbar pink' style={{fontSize:'24px', fontWeight:'500', letterSpacing:'2px'}}>SHOPMATE</span>
 				</div>
 
-				<div style={{display:'flex', width:'45%', justifyContent:'space-around', textAlign:'center'}}>
+				<div style={{display:'flex', width:'40%', justifyContent:'space-around', textAlign:'center'}}>
 					{departmentLabels}
 				</div>
 
-				<div style={{width:'15%', display:'inline-block', textAlign:'center'}}>
+				<div style={{width:'20%', display:'inline-block', textAlign:'center'}}>
 					
 				</div>
 
-				<div style={{width:'30%', display:'flex', textAlign:'center', justifyContent:'center'}}>
+				<div style={{width:'20%', display:'flex', textAlign:'center', justifyContent:'center'}}>
 					<input style={inputStyle} placeholder='Search...' className='form-control'/>
 				</div>
 				
