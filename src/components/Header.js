@@ -37,8 +37,6 @@ class Header extends Component {
 	}
 
 
-
-
 	componentDidUpdate(prevProps, prevState){
 		//Update based on url
 		if(prevProps.cart !== this.props.cart){
@@ -70,8 +68,8 @@ class Header extends Component {
 						<div className="dropdown" style={{display:'inline-block'}}>
 							<button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className='pink'><strong>{customerName}</strong></span></button>
 							<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a className="dropdown-item" onClick={this.toProfile.bind(this)}>Profile</a>
-								<a onClick={this.logout.bind(this)} className="dropdown-item">Logout</a>
+								<a className="dropdown-item link" onClick={this.toProfile.bind(this)}>Profile</a>
+								<a className="dropdown-item link" onClick={this.logout.bind(this)} >Logout</a>
 							</div>
 						</div>
 					</span>

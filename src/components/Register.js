@@ -7,7 +7,8 @@ import Header from './Header'
 import HeaderNavigation from './HeaderNavigation'
 
 import { 
-	register
+	register,
+	clearAuthError,
 } from '../actions/index';
 
 
@@ -22,6 +23,10 @@ class Register extends Component {
 		}
 	}
 
+
+	componentWillUnmount(){
+		this.props.clearAuthError()
+	}
 
 	async register(){
 		await this.props.register(this.state.name, this.state.email, this.state.password)
@@ -42,15 +47,19 @@ class Register extends Component {
 	}
 
 
-	render(){
-		
-		let registrationError
-		let fieldError;
-		if(this.props.registrationError){
-			registrationError = this.props.registrationError.message
-			fieldError = this.props.registrationError.field;
-		}
+	toLogin(){
+		this.props.history.push('/login');
+	}
 
+
+	render(){
+		let registrationError;
+		let fieldError;
+		if(this.props.authError){
+			registrationError = this.props.authError.message;
+			fieldError = this.props.authError.field;
+		}
+		
 
 		return(
 		    <div>
@@ -62,17 +71,17 @@ class Register extends Component {
 			    	<h2>Register</h2>
 			    	
 			    	<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
-						<div class="form-group">
+						<div className="form-group">
 							<h4>Name</h4>
 							<input onChange={this.handleInputChange.bind(this)} type="text" name="name" className="form-control" placeholder="Name" />
 						</div>
 
-						<div class="form-group">
+						<div className="form-group">
 							<h4>Email</h4>
 							<input onChange={this.handleInputChange.bind(this)} type="email" name="email" className="form-control" placeholder="Email" />
 						</div>
 
-						<div class="form-group">
+						<div className="form-group">
 							<h4>Password</h4>
 							<input onChange={this.handleInputChange.bind(this)} type="password" name="password" className="form-control" placeholder="Password" />
 						</div>
@@ -80,9 +89,11 @@ class Register extends Component {
 
 					<button onClick={this.register.bind(this)} className="btn btn-sm btn-danger">Register</button>
 
-					<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
+					<div style={{paddingTop:'30px'}}>
 						<h4 className='pink'>{registrationError}</h4>
 						<h4 className='pink'>{fieldError}</h4>
+
+						<span>Already have an account? <span onClick={this.toLogin.bind(this)} className='link pink'>Login</span></span>
 					</div>
 					</div>
 				</div>
@@ -94,13 +105,14 @@ class Register extends Component {
 
 function mapStateToProps(state){
 	return { 
-		registrationError:state.errors.registrationError
+		authError:state.errors.authError
 	};
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({
 		register,
+		clearAuthError,
 	}, dispatch);
 };
 

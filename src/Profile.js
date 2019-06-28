@@ -7,10 +7,8 @@ import Header from './components/Header'
 import HeaderNavigation from './components/HeaderNavigation'
 
 import { 
-	updateCustomerAddress,
 	updateCustomer,
 } from './actions/index';
-
 
 
 class Profile extends Component {
@@ -20,6 +18,7 @@ class Profile extends Component {
 		this.state = {
 			name:"",
 			email:"",
+			updatedProfile:false,
 		}
 	}
 
@@ -40,6 +39,8 @@ class Profile extends Component {
 	updateCustomer(){
 		let token = this.props.user.accessToken
 		this.props.updateCustomer(this.state.name, this.state.email, token)
+
+		this.setState({updatedProfile:true})
 	}
 
 
@@ -54,12 +55,14 @@ class Profile extends Component {
 				<div>
 		    		<Header/>
 		    		<HeaderNavigation/>
-		
 
 			    	<div style={{paddingTop:'30px', paddingBottom:'30px'}} className='offset-4 col-4'>
 			    		<div style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
-				    		
-				    		<h3>Profile Information</h3>
+			    			<div style={{padding:'15px'}}>
+				    			<h2>Profile Information</h2>
+				    			<hr/>
+				    		</div>
+
 							<div style={{padding:'15px'}}>
 								<h4>Name - {user.name}</h4>
 								<input className='form-control' type="text" value={this.state.name} onChange={(e) => { this.setState({name: e.target.value }) }} />
@@ -71,12 +74,16 @@ class Profile extends Component {
 							</div>
 
 							<div style={{padding:'15px'}}>
+								<hr/>
+								{!this.state.updatedProfile &&
 								<button onClick={this.updateCustomer.bind(this)} className='btn btn-light btn-default'>Update Information</button>
+								}
+								{this.state.updatedProfile &&
+									<h3>Updated!</h3>
+								}
 							</div>
-
 						</div>
 					</div>
-
 				</div>
 			)
 		}
@@ -99,7 +106,6 @@ function mapStateToProps(state){
 
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({
-		updateCustomerAddress,
 		updateCustomer,
 	}, dispatch);
 };

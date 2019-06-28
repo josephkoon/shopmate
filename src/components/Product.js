@@ -42,8 +42,6 @@ class Product extends Component {
 		await this.props.getProductAttributes(productID);
 
 
-		console.log(this.props.attributes)
-
 		if(this.props.attributes.length > 0){
 			let attributes = this.props.attributes;
 			let initialColor
@@ -64,8 +62,6 @@ class Product extends Component {
 
 			this.setState({selectedSize:initialSize, selectedColor:initialColor})
 		}
-
-
 	}
 
 
@@ -75,10 +71,12 @@ class Product extends Component {
 		this.setState({selectedSize:value});
 	}
 
+
 	selectColor(e){
 		let value = e.target.value
 		this.setState({selectedColor:value});
 	}
+
 
 	addToCart(cart_id, product_id){
 		let attributes = []
@@ -107,7 +105,6 @@ class Product extends Component {
 	render(){
 		let product
 
-		console.log(this.state)
 
 		if(this.props.product){
 			let image= "https://backendapi.turing.com/images/products/" + this.props.product.image
@@ -145,7 +142,6 @@ class Product extends Component {
 
 			product = (
 	     		<div className='row'>
-
 	     			<div className='col-6 text-center'>
 	     				<div>
 	     					<img src={image} style={{margin:'15px', width:'60%'}} alt=""/>
@@ -163,21 +159,21 @@ class Product extends Component {
 	     					<h2 className='pink'>£{this.props.product.price}</h2>
 	     				</div>
 
-					    <div style={{padding:'15px'}}>
+					    <div style={{padding:'15px', width:'50%'}}>
 						    <h3 className='light-gray'>Color</h3>
 							<select value={this.state.selectedColor} onChange={this.selectColor.bind(this)} className="form-control">
 								{colorOptions}
 							</select>
 						</div>
 
-				    	<div style={{padding:'15px'}}>
+				    	<div style={{padding:'15px', width:'50%'}}>
 						    <h3 className='light-gray'>Size</h3>
 							<select value={this.state.selectedSize} onChange={this.selectSize.bind(this)} className="form-control">
 								{sizeOptions}
 							</select>
 						</div>
 
-	     				<div style={{padding:'15px'}}>
+	     				<div style={{paddingTop:'30px', paddingLeft:'15px'}}>
 	     					{!this.state.addedToCart &&
 	     						<button onClick={() => this.addToCart(cart_id, product_id)} className="btn btn-lg btn-danger">Add to Cart</button>
 	     					}
@@ -196,7 +192,6 @@ class Product extends Component {
 		let reviews
 		if(this.props.reviews.length>0){
 			reviews = this.props.reviews.slice(0,10).map(review => {
-
 				let stars = []
 				for(let i=0; i<review.rating; i++){
 					stars.push(<img key={uuidv4()} style={{width:'12px'}} src={starGold} alt=""/>)
@@ -239,7 +234,6 @@ class Product extends Component {
 
 		     	<div className='background-dark-gray'>
 		     	<div style={{paddingTop:'30px', paddingBottom:'30px'}} className='container'>
-		     
 		     		<div className='box-shadow'>
 		     		<div className='background-white'>
 		     		<div style={{padding:'30px'}}>
@@ -254,7 +248,6 @@ class Product extends Component {
 		     		</div>
 		     		</div>
 		     		</div>
-
 		     	</div>
 		     	</div>
 		     	

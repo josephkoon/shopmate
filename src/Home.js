@@ -7,7 +7,6 @@ import Header from './components/Header'
 import HeaderNavigation from './components/HeaderNavigation'
 import Banner from './components/Banner'
 import BannerSub from './components/BannerSub'
-import Filter from './components/Filter'
 import Footer from './components/Footer'
 import ProductCards from './components/ProductCards'
 import FooterNewsletter from './components/FooterNewsletter'
@@ -20,7 +19,6 @@ import {
 } from './actions/index';
 
 
-
 class Home extends Component {
 	constructor(){
 		super()
@@ -30,7 +28,6 @@ class Home extends Component {
 			page:1
 		}
 	}
-
 
 	async componentDidMount(){
 		window.scrollTo(0, 0);
@@ -122,7 +119,7 @@ class Home extends Component {
 				     		<Banner/>
 				     	</div>
 
-				     	<div style={{minHeight:'100vh', paddingTop:'15px', paddingBottom:'15px'}} className='container'>
+				     	<div style={{minHeight:'80vh', paddingTop:'15px', paddingBottom:'15px'}} className='container'>
 				     		{pagination}
 					     	<ProductCards/>
 				     	</div>
@@ -153,7 +150,7 @@ function mapStateToProps(state){
 
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({
-		getProducts:getProducts,
+		getProducts,
 	}, dispatch);
 };
 

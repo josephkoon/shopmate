@@ -16,14 +16,6 @@ import querystring from 'query-string'
 
 
 class Browse extends Component {
-	constructor(){
-		super()
-
-		this.state = {
-	
-		}
-	}
-
 
 	componentDidMount(){
 		window.scrollTo(0, 0)
@@ -36,9 +28,11 @@ class Browse extends Component {
 	}
 
 
+	toHome(){
+		this.props.history.push('/');
+	}
 
 	componentDidUpdate(prevProps, prevState){
-
 		//Updated query
 		if(prevProps.location.search !== this.props.location.search){
 			let query = querystring.parse(this.props.location.search)
@@ -46,31 +40,20 @@ class Browse extends Component {
 				this.props.searchProducts(query.q)
 			}
 		}
-
 	}
-
 
 
 	render(){
 
-		// let categoryLabels;
-
-		// if(this.props.categories.length > 0){
-		// 	categoryLabels = this.props.categories.map(category => {
-		// 		return (
-		// 			<div style={{paddingLeft:'15px'}} key={category.category_id}>
-		// 				<h3 className='link'>{category.name}</h3>
-		// 			</div>
-		// 		)
-		// 	});
-		// }
-
-
-
 		let pagination
 		pagination = (
 			<div style={{paddingBottom:'7.5px'}}>
-				<h3 className='light-gray'>Browse {this.props.count} Results</h3>
+				{this.props.count > 0 &&
+					<h3 className='light-gray'>Browse {this.props.count} Results</h3>
+				}
+				{this.props.count == 0 &&
+					<h3 className='light-gray'>No Search Results! <span onClick={this.toHome.bind(this)} className='link pink'>Return Home</span></h3>
+				}
  			</div>
 		)
 
@@ -80,7 +63,7 @@ class Browse extends Component {
 		    	<HeaderNavigation/>
 
 		     	<div className='background-light-gray'>
-			     	<div style={{minHeight:'100vh', paddingTop:'15px', paddingBottom:'15px'}} className='container'>
+			     	<div style={{minHeight:'80vh', paddingTop:'15px', paddingBottom:'15px'}} className='container'>
 						{pagination}
 				     	<ProductCards/>
 			     	</div>
@@ -91,7 +74,6 @@ class Browse extends Component {
 		)
 	}
 }
-
 
 
 function mapStateToProps(state){
@@ -109,3 +91,7 @@ const mapDispatchToProps = (dispatch) => {
 
 Browse = connect(mapStateToProps, mapDispatchToProps)(Browse);
 export default withRouter(Browse);
+
+
+
+

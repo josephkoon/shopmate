@@ -14,13 +14,6 @@ import {
 
 
 class Cart extends Component {
-	constructor(){
-		super()
-
-		this.state = {
-	
-		}
-	}
 
 	componentDidMount(){
 		window.scrollTo(0, 0)
@@ -34,7 +27,6 @@ class Cart extends Component {
 	toLogin(parameter){
 		this.props.history.push('/login')
 	}
-
 
 	emptyCart(){
 		this.props.emptyCart(this.props.cart_id)

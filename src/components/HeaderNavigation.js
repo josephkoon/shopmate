@@ -21,14 +21,22 @@ class HeaderNavigation extends Component {
 	}
 
 
-	componentDidUpdate(prevProps, prevState){
+	componentWillMount(){
+		let department_id 
+		if(this.props.match.params.id){
+			department_id = this.props.match.params.id;
+			this.setState({department_id:department_id})
+		}
+	}
 
+	componentDidUpdate(prevProps, prevState){
 		//Update based on url
 		if(prevProps.match !== this.props.match){
 			let department_id = this.props.match.params.id;
 			this.setState({department_id:department_id})
 		}
 	}
+
 
 
 	toHome(){

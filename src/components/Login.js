@@ -7,7 +7,8 @@ import Header from './Header'
 import HeaderNavigation from './HeaderNavigation'
 
 import { 
-	login
+	login,
+	clearAuthError,
 } from '../actions/index';
 
 
@@ -19,6 +20,10 @@ class Login extends Component {
 			email:null,
 			password:null,
 		}
+	}
+
+	componentWillUnmount(){
+		this.props.clearAuthError()
 	}
 
 
@@ -41,17 +46,19 @@ class Login extends Component {
 	}
 
 
+	toRegister(){
+		this.props.history.push('/register');
+	}
+
+
 	render(){
-
-		console.log('error', this.props)
-
 		let loginError;
 		let fieldError;
-		if(this.props.loginError){
-			loginError = this.props.loginError.message;
-			fieldError = this.props.loginError.field;
+		if(this.props.authError){
+			loginError = this.props.authError.message;
+			fieldError = this.props.authError.field;
 		}
-		
+	
 
 		return(
 		    <div>
@@ -75,9 +82,11 @@ class Login extends Component {
 
 					<button onClick={this.login.bind(this)} className="btn btn-sm btn-danger">Login</button>
 					
-					<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
+					<div style={{paddingTop:'30px'}}>
 						<h4 className='pink'>{loginError}</h4>
 						<h4 className='pink'>{fieldError}</h4>
+
+						<span>No account? <span onClick={this.toRegister.bind(this)} className='link pink'>Register</span></span>
 					</div>
 					</div>
 				</div>
@@ -90,14 +99,15 @@ class Login extends Component {
 
 function mapStateToProps(state){
 	return { 
-		loginError:state.errors.loginError,
+		authError:state.errors.authError,
 		user:state.user.user,
 	};
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({
-		login
+		login,
+		clearAuthError,
 	}, dispatch);
 };
 

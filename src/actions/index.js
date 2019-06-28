@@ -3,18 +3,16 @@ import {
 	GET_PRODUCT,
 	GET_PRODUCT_REVIEWS,
 	GET_PRODUCT_ATTRIBUTES,
-	SEARCH_PRODUCTS,
 
 	GET_CATEGORIES,
 
 	GET_DEPARTMENTS,
 
-	SET_REGISTRATION_ERROR,
-	SET_LOGIN_ERROR,
-
 	SET_USER,
 	CLEAR_USER,
 	UPDATE_CUSTOMER,
+	SET_AUTH_ERROR,
+	CLEAR_AUTH_ERROR,
 
 	SETUP_CART,
 	GET_CART,
@@ -24,6 +22,8 @@ import {
 	GET_SHIPPING_REGIONS,
 	GET_SHIPPING_OPTIONS,
 	GET_TAXES,
+
+	SET_ORDER,
 } from './types'
 
 import axios from 'axios';
@@ -35,7 +35,6 @@ const ROOT_URL = 'https://backendapi.turing.com'
 
 
 export function register(name, email, password){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -47,7 +46,7 @@ export function register(name, email, password){
 			//If server returns error, show response
 			if(error.response){
 				if(error.response.data){
-					return dispatch(set_RegistrationError(error.response.data.error))
+					return dispatch(set_AuthError(error.response.data.error))
 				}
 			//For other types of error, just display error
 			} else if(error){
@@ -56,17 +55,10 @@ export function register(name, email, password){
 		}
 	};
 }
-export function set_RegistrationError(error){
-	return {
-		type:SET_REGISTRATION_ERROR,
-		payload:error
-	};
-}
 
 
 
 export function login(email, password){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -78,7 +70,7 @@ export function login(email, password){
 			//If server returns error, show response
 			if(error.response){
 				if(error.response.data){
-					return dispatch(set_LoginError(error.response.data.error))
+					return dispatch(set_AuthError(error.response.data.error))
 				}
 			//For other types of error, just display error
 			} else if(error){
@@ -87,20 +79,26 @@ export function login(email, password){
 		}
 	};
 }
+
+export function set_AuthError(error){
+	return {
+		type:SET_AUTH_ERROR,
+		payload:error
+	};
+}
+
 export function set_User(user){
 	return {
 		type:SET_USER,
 		payload:user
 	};
 }
-export function set_LoginError(error){
+
+export function clearAuthError(){
 	return {
-		type:SET_LOGIN_ERROR,
-		payload:error
+		type:CLEAR_AUTH_ERROR
 	};
 }
-
-
 
 export function logout(){
 	return {
@@ -112,12 +110,7 @@ export function logout(){
 
 
 
-
-
-
-
 export function setupCart(){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -140,6 +133,7 @@ export function setupCart(){
 		}
 	};	
 }
+
 export function setup_Cart(cart){
 	return {
 		type:SETUP_CART,
@@ -150,15 +144,11 @@ export function setup_Cart(cart){
 
 
 
-
 export function getCart(cart_id){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 		
 			const cart = await axios.get(ROOT_URL+'/shoppingcart/'+cart_id);
-
-			console.log('cart', cart.data)
 
 			return dispatch(get_Cart(cart.data));
 
@@ -178,7 +168,6 @@ export function getCart(cart_id){
 
 
 export function addToCart(cart_id, product_id, attributes){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -209,10 +198,7 @@ export function get_Cart(cart){
 
 
 
-
-
 export function emptyCart(cart_id){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 		
@@ -244,14 +230,7 @@ export function empty_Cart(){
 
 
 
-
-
-
-
-
-
 export function getCartTotal(cart_id){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -272,6 +251,7 @@ export function getCartTotal(cart_id){
 		}
 	};	
 }
+
 export function get_CartTotal(total){
 	return {
 		type:GET_CART_TOTAL,
@@ -283,10 +263,7 @@ export function get_CartTotal(total){
 
 
 
-
-
 export function getProducts(page){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -300,9 +277,6 @@ export function getProducts(page){
 			}
 
 			const products = await axios.get(ROOT_URL+'/products' + parameter);
-
-			//let count = products.data.count
-			//let rows = products.data.rows
 
 			return dispatch(get_Products(products.data));
 
@@ -322,9 +296,7 @@ export function getProducts(page){
 
 
 
-
 export function getProductsInDepartment(id, page){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -338,9 +310,6 @@ export function getProductsInDepartment(id, page){
 			}
 
 			const products = await axios.get(ROOT_URL+'/products/inDepartment/'+id + parameter);
-
-			//let count = products.data.count
-			//let rows = products.data.rows
 
 			return dispatch(get_Products(products.data));
 
@@ -362,7 +331,6 @@ export function getProductsInDepartment(id, page){
 
 
 export function getProductsInCategory(id){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -371,9 +339,6 @@ export function getProductsInCategory(id){
 			//description_length - defaults to 200
 
 			const products = await axios.get(ROOT_URL+'/products/inCategory/'+id);
-
-			//let count = products.data.count
-			//let rows = products.data.rows
 
 			return dispatch(get_Products(products.data));
 
@@ -396,7 +361,6 @@ export function getProductsInCategory(id){
 
 
 export function searchProducts(query){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -407,8 +371,6 @@ export function searchProducts(query){
 			//description_length - defaults to 200
 
 			const products = await axios.get(ROOT_URL+"/products/search?query_string=" + query);
-
-			console.log('products', products)
 
 			return dispatch(get_Products(products.data));
 
@@ -426,10 +388,6 @@ export function searchProducts(query){
 	};
 }
 
-
-
-
-
 export function get_Products(products){
 	return {
 		type:GET_PRODUCTS,
@@ -444,7 +402,6 @@ export function get_Products(products){
 
 
 export function getProduct(id){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -509,7 +466,6 @@ export function get_ProductReviews(reviews){
 
 
 export function getProductAttributes(id){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -544,12 +500,7 @@ export function get_ProductAttributes(attributes){
 
 
 
-
-
-
-
 export function getCategories(){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -583,7 +534,6 @@ export function getCategories(){
 
 
 export function getDepartments(){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -614,7 +564,6 @@ export function get_Departments(departments){
 
 
 export function getCategoriesInDepartment(id){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -648,15 +597,11 @@ export function get_Categories(categories){
 
 
 
-
 export function getShippingRegions(){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
 			const regions = await axios.get(ROOT_URL+'/shipping/regions/');
-
-			console.log(regions)
 
 			return dispatch(get_ShippingRegions(regions.data));
 
@@ -685,7 +630,6 @@ export function get_ShippingRegions(regions){
 
 
 export function getShippingOptions(region_id){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -721,7 +665,6 @@ export function get_ShippingOptions(options){
 
 
 export function getTaxes(){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -755,7 +698,6 @@ export function get_Taxes(taxes){
 
 
 export function createOrder(cart_id, shipping_id, tax_id, token){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -772,6 +714,57 @@ export function createOrder(cart_id, shipping_id, tax_id, token){
 			const order = await axios.post(ROOT_URL+'/orders', data, {headers:headers} );
 
 			console.log('order', order)
+			
+			return dispatch(set_Order(order.data));
+
+		} catch(error){
+			//If server returns error, show response
+			if(error.response){
+				if(error.response.data){
+					console.log('ERROR', error.response.data)
+				}
+			//For other types of error, just display error
+			} else if(error){
+				console.log('ERROR')
+			}
+		}
+	};
+}
+
+
+export function set_Order(order){
+	return {
+		type:SET_ORDER,
+		payload:order
+	};
+}
+
+
+
+
+
+
+export function chargeStripe(stripeToken, order_id, description, amount, token){
+	//dispatch any actions with redux thunk
+	return async function(dispatch){
+		try {
+
+			var headers = {
+			    'user-key': token, 
+			}
+
+			let data = {
+				stripeToken,
+				order_id,
+				description,
+				amount,
+			};
+
+			console.log(data)
+
+			const charge = await axios.post(ROOT_URL+'/stripe/charge', data, {headers:headers} );
+
+			console.log('charge', charge)
 
 		} catch(error){
 			//If server returns error, show response
@@ -792,8 +785,12 @@ export function createOrder(cart_id, shipping_id, tax_id, token){
 
 
 
+
+
+
+
+
 export function updateCustomer(name, email, token){
-	//dispatch any actions with redux thunk
 	return async function(dispatch){
 		try {
 
@@ -824,47 +821,6 @@ export function updateCustomer(name, email, token){
 	};
 }
 
-
-
-export function updateCustomerAddress(token){
-	//dispatch any actions with redux thunk
-	return async function(dispatch){
-		try {
-
-			var headers = {
-			    'user-key': token, 
-			}
-
-			let data = {
-				address_1:'test address1',
-				address_2:'test address2',
-				city:'test city',
-				region:'test region',
-				postal_code:'test postalcode',
-				country:'test country',
-				shipping_region_id:1
-			};
-
-			const customer = await axios.put(ROOT_URL+'/customers/address', data, {headers:headers} );
-
-			console.log('customer', customer)
-			return dispatch(update_Customer(customer.data));
-
-		} catch(error){
-			//If server returns error, show response
-			if(error.response){
-				if(error.response.data){
-					console.log('ERROR', error.response.data)
-				}
-			//For other types of error, just display error
-			} else if(error){
-				console.log('ERROR')
-			}
-		}
-	};
-}
-
-
 export function update_Customer(customer){
 	return {
 		type:UPDATE_CUSTOMER,
@@ -873,8 +829,44 @@ export function update_Customer(customer){
 }
 
 
+//NOT USED - UPDATE CUSTOMER ADDRESS
+// export function updateCustomerAddress(token){
+// 	//dispatch any actions with redux thunk
+// 	return async function(dispatch){
+// 		try {
 
+// 			var headers = {
+// 			    'user-key': token, 
+// 			}
 
+// 			let data = {
+// 				address_1:'test address1',
+// 				address_2:'test address2',
+// 				city:'test city',
+// 				region:'test region',
+// 				postal_code:'test postalcode',
+// 				country:'test country',
+// 				shipping_region_id:1
+// 			};
+
+// 			const customer = await axios.put(ROOT_URL+'/customers/address', data, {headers:headers} );
+
+// 			console.log('customer', customer)
+// 			return dispatch(update_Customer(customer.data));
+
+// 		} catch(error){
+// 			//If server returns error, show response
+// 			if(error.response){
+// 				if(error.response.data){
+// 					console.log('ERROR', error.response.data)
+// 				}
+// 			//For other types of error, just display error
+// 			} else if(error){
+// 				console.log('ERROR')
+// 			}
+// 		}
+// 	};
+// }
 
 
 

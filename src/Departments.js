@@ -42,7 +42,6 @@ class Departments extends Component {
 
 
 	componentDidUpdate(prevProps, prevState){
-
 		//Update based on url
 		if(prevProps.match !== this.props.match){
 
@@ -57,36 +56,23 @@ class Departments extends Component {
 
 
 	async nextPage(){
+		let nextPage = this.state.page+1
 
-		await this.props.getProductsInDepartment(this.state.department_id, this.state.page+1);
-		this.setState({page:this.state.page+1})
+		await this.props.getProductsInDepartment(this.state.department_id, nextPage);
+		this.setState({page:nextPage})
 	}
 
 
 	async prevPage(){
 		let prevPage = this.state.page - 1
 
-		await this.props.getProductsInDepartment(this.state.department_id, this.state.page-1);
-		this.setState({page:this.state.page-1})
+		await this.props.getProductsInDepartment(this.state.department_id, prevPage);
+		this.setState({page:prevPage})
 	}
 
 
 
-
 	render(){
-
-		// let categoryLabels;
-
-		// if(this.props.categories.length > 0){
-		// 	categoryLabels = this.props.categories.map(category => {
-		// 		return (
-		// 			<div style={{paddingLeft:'15px'}} key={category.category_id}>
-		// 				<h3 className='link'>{category.name}</h3>
-		// 			</div>
-		// 		)
-		// 	});
-		// }
-
 		let showNext = true
 		if(this.state.page*20 > this.props.count){
 			showNext = false
@@ -137,14 +123,13 @@ class Departments extends Component {
 		)
 
 
-
 		return(
 		    <div>
 		    	<Header/>
 		    	<HeaderNavigation/>
 
 		     	<div className='background-light-gray'>
-			     	<div style={{minHeight:'100vh',paddingTop:'15px', paddingBottom:'15px'}} className='container'>
+			     	<div style={{minHeight:'80vh',paddingTop:'15px', paddingBottom:'15px'}} className='container'>
 			     		{pagination}
 				     	<ProductCards/>
 			     	</div>
@@ -166,8 +151,8 @@ function mapStateToProps(state){
 
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({
-		getCategoriesInDepartment:getCategoriesInDepartment,
-		getProductsInDepartment:getProductsInDepartment,
+		getCategoriesInDepartment,
+		getProductsInDepartment,
 	}, dispatch);
 };
 
