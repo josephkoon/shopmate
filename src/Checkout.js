@@ -251,7 +251,7 @@ class Checkout extends Component {
 
 					<div style={{padding:'15px'}}>
 						<h4 className='light-gray'>Cart Total</h4>
-						<h3>{displayCartTotal}</h3>
+						<h3>${displayCartTotal}</h3>
 					</div>
 
 					<div style={{padding:'15px'}}>

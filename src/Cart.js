@@ -51,7 +51,7 @@ class Cart extends Component {
 						</td>
 						<td className="col-2">{item.attributes}</td>
 						<td className="col-2">{item.quantity}</td>
-						<td className="col-1"><strong>£{item.price}</strong></td>
+						<td className="col-1"><strong>${item.price}</strong></td>
 					</tr>
 				);
 			})

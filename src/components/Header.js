@@ -78,7 +78,7 @@ class Header extends Component {
 
 				<div style={{width:'15%', display:'inline-block', textAlign:'center'}}>
 					<img style={{width:'12px', marginTop:'-2px'}} src={flag} alt=""/>
-					<span className='topbar'> £ GBP </span>
+					<span className='topbar'> $ USD </span>
 				</div>
 
 				<div style={{width:'30%', display:'inline-block', textAlign:'right'}}>

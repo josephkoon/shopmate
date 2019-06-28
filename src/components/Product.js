@@ -156,7 +156,7 @@ class Product extends Component {
 	     				<div style={{padding:'15px'}}>
 	     					<h4 className='light-gray'>Home / </h4>
 	     					<h2>{this.props.product.name}</h2>
-	     					<h2 className='pink'>£{this.props.product.price}</h2>
+	     					<h2 className='pink'>${this.props.product.price}</h2>
 	     				</div>
 
 					    <div style={{padding:'15px', width:'50%'}}>
