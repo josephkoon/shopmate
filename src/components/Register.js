@@ -105,7 +105,8 @@ class Register extends Component {
 
 function mapStateToProps(state){
 	return { 
-		authError:state.errors.authError
+		authError:state.errors.authError,
+		user:state.user.user,
 	};
 }
 
