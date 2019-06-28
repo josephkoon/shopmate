@@ -60,7 +60,8 @@ const containerStyle = {
 const cardStyle = {
 	padding:'30px', 
 	borderRadius:'4px', 
-	border:'1px solid lightgray'
+	border:'1px solid lightgray',
+	backgroundColor:'white',
 }
 
 

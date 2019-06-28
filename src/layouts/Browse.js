@@ -73,6 +73,7 @@ class Browse extends Component {
 	}
 }
 
+
 const containerStyle = {
 	minHeight:'80vh', 
 	paddingTop:'15px', 

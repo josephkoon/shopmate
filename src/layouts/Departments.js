@@ -149,7 +149,6 @@ const containerStyle = {
 	paddingBottom:'15px'
 }
 
-
 const blackArrowStyle = {
 	width:'32px', 
 	backgroundColor:'#2E2E2E', 

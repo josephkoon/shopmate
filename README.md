@@ -11,7 +11,7 @@ Enjoy.
 Run locally with 
 
 ```
-npm run start
+npm start
 ```
 
 
