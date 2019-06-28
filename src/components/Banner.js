@@ -26,8 +26,8 @@ class Banner extends Component {
 		}
 
 		return(
-	     	<div style={{display:'flex', alignItems:'center', height:'300px', width:'100%'}}>
-	     		<div style={{left:'0', position:'absolute', width:'100%', padding:'60px'}}>
+	     	<div style={bannerStyle}>
+	     		<div style={bannerContentStyle}>
 	     			<div>
 	     				<h1>Mens wear</h1>
 	     			</div>
@@ -36,10 +36,31 @@ class Banner extends Component {
 	     			</div>
 	     		</div>
 
-	     		<img style={{height:'100%', flex:'1', objectFit:'cover', overflow:'hidden'}} src={modal4} alt=""/>
+	     		<img style={bannerImageStyle} src={modal4} alt=""/>
 	     	</div>
 		);
 	}
+}
+
+const bannerStyle = {
+	display:'flex', 
+	alignItems:'center', 
+	height:'300px', 
+	width:'100%',
+}
+
+const bannerContentStyle = {
+	left:'0', 
+	position:'absolute', 
+	width:'100%', 
+	padding:'60px'
+}
+
+const bannerImageStyle = {
+	height:'100%', 
+	flex:'1', 
+	objectFit:'cover', 
+	overflow:'hidden'
 }
 
 

@@ -1,18 +1,18 @@
 import {
+	SET_USER,
+	CLEAR_USER,
+	UPDATE_CUSTOMER,
+
+	SET_AUTH_ERROR,
+	CLEAR_AUTH_ERROR,
+
 	GET_PRODUCTS,
 	GET_PRODUCT,
 	GET_PRODUCT_REVIEWS,
 	GET_PRODUCT_ATTRIBUTES,
 
 	GET_CATEGORIES,
-
 	GET_DEPARTMENTS,
-
-	SET_USER,
-	CLEAR_USER,
-	UPDATE_CUSTOMER,
-	SET_AUTH_ERROR,
-	CLEAR_AUTH_ERROR,
 
 	SETUP_CART,
 	GET_CART,
@@ -29,7 +29,6 @@ import {
 import axios from 'axios';
 
 const ROOT_URL = 'https://backendapi.turing.com'
-
 
 
 
@@ -80,17 +79,17 @@ export function login(email, password){
 	};
 }
 
-export function set_AuthError(error){
-	return {
-		type:SET_AUTH_ERROR,
-		payload:error
-	};
-}
-
 export function set_User(user){
 	return {
 		type:SET_USER,
 		payload:user
+	};
+}
+
+export function set_AuthError(error){
+	return {
+		type:SET_AUTH_ERROR,
+		payload:error
 	};
 }
 
@@ -359,7 +358,6 @@ export function getProductsInCategory(id){
 
 
 
-
 export function searchProducts(query){
 	return async function(dispatch){
 		try {
@@ -394,8 +392,6 @@ export function get_Products(products){
 		payload:products
 	};
 }
-
-
 
 
 
@@ -827,6 +823,7 @@ export function update_Customer(customer){
 		payload:customer
 	};
 }
+
 
 
 //NOT USED - UPDATE CUSTOMER ADDRESS

@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import Home from './Home';
-import Departments from './Departments';
-import Profile from './Profile';
-import Cart from './Cart';
-import Checkout from './Checkout';
-import Browse from './Browse';
+import Home from './layouts/Home';
+import Departments from './layouts/Departments';
+import Profile from './layouts/Profile';
+import Cart from './layouts/Cart';
+import Checkout from './layouts/Checkout';
+import Browse from './layouts/Browse';
+import Product from './layouts/Product';
 
-import Product from './components/Product';
 import Register from './components/Register';
 import Login from './components/Login';
 
@@ -60,3 +60,7 @@ ReactDOM.render(
 
 
 serviceWorker.unregister();
+
+
+
+

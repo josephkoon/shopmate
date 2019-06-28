@@ -81,12 +81,7 @@ class HeaderNavigation extends Component {
 			});
 		}
 
-		let inputStyle = {
-			background:`white url(${search}) no-repeat`,
-			backgroundPosition: 'left 10px bottom 8px',
-			backgroundSize:'14px',
-			paddingLeft:'36px'
-		}
+
 
 		return(
 			<div className='background-black' style={{height:'60px', paddingLeft:'15px', paddingRight:'15px', display:'flex', alignItems:'center'}}>
@@ -107,6 +102,14 @@ class HeaderNavigation extends Component {
 			</div>
 		);
 	}
+}
+
+
+const inputStyle = {
+	background:`white url(${search}) no-repeat`,
+	backgroundPosition: 'left 10px bottom 8px',
+	backgroundSize:'14px',
+	paddingLeft:'36px'
 }
 
 

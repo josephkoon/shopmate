@@ -59,7 +59,6 @@ class Login extends Component {
 			fieldError = this.props.authError.field;
 		}
 	
-
 		return(
 		    <div>
 		    	<Header/>

@@ -29,12 +29,13 @@ class Footer extends Component {
 		}
 
 		return(
-			<div className='background-black' style={{width:'100%', textAlign:'center', padding:'15px'}}>
-				<div style={{margin:'auto', width:'60%', paddingTop:'15px', paddingBottom:'15px',  display:'flex', justifyContent:'space-around'}}>
+			<div className='background-black' style={containerStyle}>
+			
+				<div style={departmentsStyle}>
 					{departmentLabels}
 				</div>
 		
-				<div style={{margin:'auto', width:'25%', paddingTop:'15px', paddingBottom:'15px', display:'flex', justifyContent:'space-around'}}>
+				<div style={socialStyle}>
 					<span className='topbar dark-gray' style={{flex:'1'}}>
 						<img style={{width:'24px'}} src={instagram} alt=""/> 
 					</span>
@@ -49,12 +50,46 @@ class Footer extends Component {
 					</span>
 				</div>
 
-				<div style={{margin:'auto', width:'40%', paddingTop:'15px', paddingBottom:'15px',  display:'flex', justifyContent:'space-around'}}>
+				<div style={companyStyle}>
 					<span className='topbar dark-gray' style={{flex:'1'}}>©2016 shopmate Ltd  •  Contact  • Privacy Policy</span>
 				</div>
 			</div>
 		);
 	}
+}
+
+
+const containerStyle = {
+	width:'100%', 
+	textAlign:'center', 
+	padding:'15px'
+}
+
+const departmentsStyle = {
+	margin:'auto', 
+	width:'60%', 
+	paddingTop:'15px', 
+	paddingBottom:'15px',  
+	display:'flex', 
+	justifyContent:'space-around'
+}
+
+const socialStyle = {
+	margin:'auto', 
+	width:'25%', 
+	paddingTop:'15px', 
+	paddingBottom:'15px', 
+	display:'flex', 
+	justifyContent:'space-around'
+}
+
+const companyStyle = {
+	margin:'auto', 
+	width:'40%', 
+	paddingTop:'15px', 
+	paddingBottom:'15px',  
+	display:'flex', 
+	justifyContent:'space-around'
 }
 
 
