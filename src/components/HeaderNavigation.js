@@ -94,6 +94,9 @@ class HeaderNavigation extends Component {
 					{departmentLabels}
 				</div>
 
+				<div className='d-sm-none' style={{width:'40%'}}>
+				</div>
+
 				<div style={{width:'10%'}}>
 				</div>
 

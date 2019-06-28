@@ -43,10 +43,10 @@ class Cart extends Component {
 
 				return (
 					<tr key={item.item_id} className="d-flex">
-						<td className="col-3">
+						<td className="col-2">
 							<img style={{width:'80%'}} src={image} alt=""/>
 						</td>
-						<td className="col-3">
+						<td className="col-4">
 							<h6><strong>{item.name}</strong></h6>
 							<h6 className='light-gray'>SKU #{item.product_id}</h6>
 						</td>
@@ -78,8 +78,8 @@ class Cart extends Component {
 					<table className="table table-borderless" >
 						<thead style={tableHeaderStyle}>
 							<tr className="d-flex">
-								<th className="col-3 light-gray">Item</th>
-								<th className="col-3 light-gray"></th>
+								<th className="col-2 light-gray">Item</th>
+								<th className="col-4 light-gray"></th>
 								<th className="col-2 light-gray">Details</th>
 								<th className="col-2 light-gray">Quantity</th>
 								<th className="col-2 light-gray">Price</th>
