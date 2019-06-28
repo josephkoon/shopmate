@@ -37,11 +37,13 @@ class Product extends Component {
 
 		let productID = this.props.match.params.id
 
+		//Load product data
 		await this.props.getProduct(productID);
 		await this.props.getProductReviews(productID);
 		await this.props.getProductAttributes(productID);
 
 
+		//Select initial attributes
 		if(this.props.attributes.length > 0){
 			let attributes = this.props.attributes;
 			let initialColor

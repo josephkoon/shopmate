@@ -22,6 +22,7 @@ class HeaderNavigation extends Component {
 
 
 	componentWillMount(){
+		//Update department id
 		let department_id 
 		if(this.props.match.params.id){
 			department_id = this.props.match.params.id;
@@ -30,7 +31,7 @@ class HeaderNavigation extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState){
-		//Update based on url
+		//Update department id
 		if(prevProps.match !== this.props.match){
 			let department_id = this.props.match.params.id;
 			this.setState({department_id:department_id})
@@ -63,6 +64,7 @@ class HeaderNavigation extends Component {
 	render(){
 		let departmentLabels 
 
+		//Render department labels
 		if(this.props.departments.length > 0){
 			departmentLabels = this.props.departments.map(department => {
 
@@ -80,7 +82,6 @@ class HeaderNavigation extends Component {
 				)
 			});
 		}
-
 
 
 		return(

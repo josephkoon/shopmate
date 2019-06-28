@@ -18,6 +18,7 @@ class Footer extends Component {
 	render(){
 		let departmentLabels;
 
+		//Render department labels
 		if(this.props.departments.length > 0){
 			departmentLabels = this.props.departments.map(department => {
 				return (

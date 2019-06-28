@@ -13,6 +13,7 @@ class ProductCards extends Component {
 	render(){
 		let productCards
 
+		//Render product cards
 		if(this.props.products.length > 0){
 			productCards = this.props.products.map(product => {
 				let thumbnail = "https://backendapi.turing.com/images/products/" + product.thumbnail

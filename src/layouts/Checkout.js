@@ -39,17 +39,19 @@ class Checkout extends Component {
 		await this.props.getShippingRegions();
 		await this.props.getTaxes();
 
-		//Select Tax
+		//Set selected tax
 		if(this.props.taxes.length > 0){
 			this.setState({selectedTax:this.props.taxes[0]})
 		}
 	}
 
 
+	//Go to step 2
 	stepTwo(){
 		this.setState({step:2})
 	}
 
+	//Get order. Go to step 3
 	stepThree(){
 		let cart_id = this.props.cart_id;
 		let shipping_id = this.state.selectedShipping;
@@ -70,6 +72,7 @@ class Checkout extends Component {
 	}
 
 
+	//Select region
 	selectRegionOption(e){
 		let value = e.target.value
 		this.props.getShippingOptions(value)
@@ -77,33 +80,38 @@ class Checkout extends Component {
 		this.setState({selectedRegion:value});
 	}
 
+	//Select shipping
 	selectShippingOption(e){
 		let value = e.target.value
 
 		this.setState({selectedShipping:value});
 	}
 
+	//Go home
 	toHome(parameter){
 		this.props.history.push('/')
 	}
 
 
+	//Setup Stripe form
 	setupForm(){
+		//Stripe styling
 		var style = {
-			  // base: {
-			  //   color: '#32325d',
-			  //   fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-			  //   fontSmoothing: 'antialiased',
-			  //   fontSize: '14px',
-			  //   '::placeholder': {
-			  //     color: '#aab7c4'
-			  //   }
-			  // },
-			  // invalid: {
-			  //   color: '#fa755a',
-			  //   iconColor: '#fa755a'
-			  // }
+		// 	  base: {
+		// 	    color: '#32325d',
+		// 	    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+		// 	    fontSmoothing: 'antialiased',
+		// 	    fontSize: '14px',
+		// 	    '::placeholder': {
+		// 	      color: '#aab7c4'
+		// 	    }
+		// 	  },
+		// 	  invalid: {
+		// 	    color: '#fa755a',
+		// 	    iconColor: '#fa755a'
+		// 	  }
 		};
+
 		// Create an instance of the card Element.
 		var card = elements.create('card', {style: style});
 		card.mount('#card-element');
@@ -152,7 +160,7 @@ class Checkout extends Component {
 
 	render(){
 
-
+		//Display region options
 		let regions = []
 		if(this.props.regions.length > 0){
 			regions = this.props.regions.map(region => {
@@ -162,6 +170,7 @@ class Checkout extends Component {
 			})
 		}
 
+		//Display options
 		let options = []
 		if(this.props.options.length > 0){
 			options = this.props.options.map(option => {
@@ -172,16 +181,19 @@ class Checkout extends Component {
 		}
 
 
+		//Display tax
 		let displayTax = ""
 		if(this.state.selectedTax){
 			displayTax = this.state.selectedTax.tax_type;
 		}
 
+		//Display cart total
 		let displayCartTotal = ""
 		if(this.props.total){
 			displayCartTotal = this.props.total;
 		}
 
+		//Display shipping option
 		let displayShipping = ""
 		if(this.state.selectedShipping){
 			for(let i=0; i<this.props.options.length; i++){

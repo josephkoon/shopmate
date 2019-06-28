@@ -15,6 +15,7 @@ class Banner extends Component {
 	render(){
 		let categoryLabels;
 
+		//Render category labels
 		if(this.props.categories.length > 0){
 			categoryLabels = this.props.categories.map(category => {
 				return (

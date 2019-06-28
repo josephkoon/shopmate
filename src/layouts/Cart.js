@@ -36,6 +36,7 @@ class Cart extends Component {
 	render(){
 		let cartList
 
+		//Render cart items
 		if(this.props.cart.length > 0){
 			cartList = this.props.cart.map(item => {
 				let image= "https://backendapi.turing.com/images/products/" + item.image

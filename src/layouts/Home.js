@@ -66,9 +66,6 @@ class Home extends Component {
 			showPrev = true
 		}
 
-
-
-
 		let pagination
 		pagination = (
 			<div style={{paddingBottom:'7.5px'}}>
@@ -107,7 +104,6 @@ class Home extends Component {
 	 			</div>
  			</div>
 		)
-
 
 
 		if(this.state.shouldRender){
@@ -160,8 +156,6 @@ const grayArrowStyle = {
 	backgroundColor:'lightgray', 
 	borderRadius:'50%'
 }
-
-
 
 
 function mapStateToProps(state){
