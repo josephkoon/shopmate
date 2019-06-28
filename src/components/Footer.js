@@ -34,7 +34,7 @@ class Footer extends Component {
 					{departmentLabels}
 				</div>
 		
-				<div style={{margin:'auto', width:'20%', paddingTop:'15px', paddingBottom:'15px', display:'flex', justifyContent:'space-around'}}>
+				<div style={{margin:'auto', width:'25%', paddingTop:'15px', paddingBottom:'15px', display:'flex', justifyContent:'space-around'}}>
 					<span className='topbar dark-gray' style={{flex:'1'}}>
 						<img style={{width:'24px'}} src={instagram} alt=""/> 
 					</span>

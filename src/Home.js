@@ -67,14 +67,16 @@ class Home extends Component {
 		}
 
 
+
+
 		let pagination
 		pagination = (
 			<div style={{paddingBottom:'7.5px'}}>
-				<div style={{float:'left'}}>
+				<div style={{width:'50%', display:'inline-block'}}>
 					<h3 className='light-gray'>Browse {this.props.count} Items</h3>
 				</div>
 
-				<div style={{textAlign:'right'}}>
+				<div style={{width:'50%', display:'inline-block', textAlign:'right'}}>
 	     		<div style={{display:'inline-block', width:'60px', textAlign:'center'}}>
 		     		{showPrev &&
 	     				<span onClick={this.prevPage.bind(this)} style={{cursor:'pointer', height:'60px', width:'60px'}}>

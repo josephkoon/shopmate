@@ -94,7 +94,7 @@ class HeaderNavigation extends Component {
 					<span onClick={this.toHome.bind(this)} className='link topbar pink' style={{fontSize:'24px', fontWeight:'500', letterSpacing:'2px'}}>SHOPMATE</span>
 				</div>
 
-				<div style={{display:'flex', width:'40%', justifyContent:'space-around', textAlign:'center'}}>
+				<div className='d-none d-sm-flex' style={{display:'flex', width:'40%', justifyContent:'space-around', textAlign:'center'}}>
 					{departmentLabels}
 				</div>
 

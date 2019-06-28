@@ -65,7 +65,7 @@ class Checkout extends Component {
 			//Setup Form
 			setTimeout(() => {
 			  this.setupForm()
-			}, 1000);
+			}, 500);
 		}
 	}
 

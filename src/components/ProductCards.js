@@ -18,7 +18,7 @@ class ProductCards extends Component {
 				let thumbnail = "https://backendapi.turing.com/images/products/" + product.thumbnail
 
 				return (
-					<div key={product.product_id} className='col-4 col-md-3 text-center link' style={{paddingLeft:'7.5px', paddingRight:'7.5px', paddingBottom:'15px'}} >
+					<div key={product.product_id} className='col-6 col-md-3 text-center link' style={{paddingLeft:'7.5px', paddingRight:'7.5px', paddingBottom:'15px'}} >
 						<div onClick={()=>this.toProduct(product.product_id)} className='card-shadow' style={{backgroundColor:'white', height:'320px', padding:'15px'}}>
 							<div style={{height:'60%', display:'flex', alignItems:'center', justifyContent:'center'}}>
 								<img style={{height:'80%'}} src={thumbnail} alt=""/>

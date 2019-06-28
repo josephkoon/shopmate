@@ -45,13 +45,13 @@ class Cart extends Component {
 						<td className="col-3">
 							<img style={{width:'80%'}} src={image} alt=""/>
 						</td>
-						<td className="col-4">
+						<td className="col-3">
 							<h6><strong>{item.name}</strong></h6>
 							<h6 className='light-gray'>SKU #{item.product_id}</h6>
 						</td>
 						<td className="col-2">{item.attributes}</td>
 						<td className="col-2">{item.quantity}</td>
-						<td className="col-1"><strong>${item.price}</strong></td>
+						<td className="col-2"><strong>${item.price}</strong></td>
 					</tr>
 				);
 			})
@@ -70,7 +70,7 @@ class Cart extends Component {
 		    	<Header/>
 		    	<HeaderNavigation/>
 
-		    	<div style={{paddingTop:'30px'}} className='offset-1 col-10'>
+		    	<div style={{paddingTop:'30px'}} className='col-12 offset-sm-1 col-sm-10'>
 			     	<h2>{this.props.cart.length} Items In Cart</h2>
 
 			     	<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
@@ -78,10 +78,10 @@ class Cart extends Component {
 						<thead style={{borderTop:'1px solid lightgray', borderBottom:'1px solid lightgray'}}>
 							<tr className="d-flex">
 								<th className="col-3 light-gray">Item</th>
-								<th className="col-4 light-gray"></th>
+								<th className="col-3 light-gray"></th>
 								<th className="col-2 light-gray">Details</th>
 								<th className="col-2 light-gray">Quantity</th>
-								<th className="col-1 light-gray">Price</th>
+								<th className="col-2 light-gray">Price</th>
 							</tr>
 						</thead>
 						<tbody style={{borderBottom:'1px solid lightgray'}}>

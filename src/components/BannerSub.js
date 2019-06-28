@@ -12,7 +12,7 @@ class BannerSub extends Component {
 	     				<h1 className='white'>Converse</h1>
 	     			</div>
 
-	     			<div style={{width:'50%'}}>
+	     			<div className='d-none d-sm-block' style={{width:'50%'}}>
 		     			<h2 className='white'>Explore styles tough enough to handle all your workouts</h2>
 	     			</div>
 
