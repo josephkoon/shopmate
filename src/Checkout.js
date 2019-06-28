@@ -198,7 +198,7 @@ class Checkout extends Component {
 			<HeaderCheckout/>
 
 		    <div style={{paddingTop:'30px'}} className='row'>
-		    <div className='col-4 offset-4'>
+		    <div className='col-12 offset-md-4 col-md-4'>
 
 		    	{this.state.step == 1 &&
 		    	<div className='box-shadow' style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>

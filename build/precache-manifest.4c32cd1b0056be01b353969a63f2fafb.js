@@ -1,23 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "470ef0de5f65fc5cad0e1fa5ea9597cd",
+    "revision": "25b3356559898b4fd135253dcbbde310",
     "url": "/shopmate/index.html"
   },
   {
-    "revision": "6274bd9f0d1d56d508de",
-    "url": "/shopmate/static/css/main.4b8d45cf.chunk.css"
+    "revision": "90dbad431edc64c0fa38",
+    "url": "/shopmate/static/css/main.c168f66c.chunk.css"
   },
   {
-    "revision": "713edae1d883fd88a087",
-    "url": "/shopmate/static/js/2.d801738c.chunk.js"
+    "revision": "dc55677a8a6eb81d9bfb",
+    "url": "/shopmate/static/js/2.3fd12529.chunk.js"
   },
   {
-    "revision": "6274bd9f0d1d56d508de",
-    "url": "/shopmate/static/js/main.28285d39.chunk.js"
+    "revision": "90dbad431edc64c0fa38",
+    "url": "/shopmate/static/js/main.e32d7ba9.chunk.js"
   },
   {
     "revision": "f89ab9f7d8da43b71c67",
     "url": "/shopmate/static/js/runtime~main.03f445c5.js"
+  },
+  {
+    "revision": "c8fb042114c5ed9e44f01325d28010c7",
+    "url": "/shopmate/static/media/icons-rocket.c8fb0421.png"
   },
   {
     "revision": "294e063695792e06a6ac35d1127509ab",

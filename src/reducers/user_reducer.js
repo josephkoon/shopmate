@@ -21,6 +21,7 @@ export default function(state={user:null}, action){
 
 		return {...state, user:updateUser}
 
+
 	default:
 		return state;
 	}

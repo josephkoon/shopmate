@@ -56,7 +56,7 @@ class Profile extends Component {
 		    		<Header/>
 		    		<HeaderNavigation/>
 
-			    	<div style={{paddingTop:'30px', paddingBottom:'30px'}} className='offset-4 col-4'>
+			    	<div style={{paddingTop:'30px', paddingBottom:'30px'}} className='col-12 offset-md-4 col-md-4'>
 			    		<div style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
 			    			<div style={{padding:'15px'}}>
 				    			<h2>Profile Information</h2>

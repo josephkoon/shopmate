@@ -1,6 +1,6 @@
 # SHOPMATE
 
-A minimalist eCommerce store. Built with React/Redux. Features include product authentication, product browsing, cart, and a checkout flow.
+A minimalistic eCommerce store. Built with React/Redux. Features include product authentication, product browsing, cart, and a checkout flow with Stripe.
 
 Enjoy.
 
@@ -19,6 +19,15 @@ Build with
 ```
 npm run build
 ```
+
+
+Built with 
+```
+React
+Redux
+Bootstrap 4
+```
+
 
 
 ## Authors

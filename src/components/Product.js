@@ -142,7 +142,7 @@ class Product extends Component {
 
 			product = (
 	     		<div className='row'>
-	     			<div className='col-6 text-center'>
+	     			<div className='col-12 col-md-6 text-center'>
 	     				<div>
 	     					<img src={image} style={{margin:'15px', width:'60%'}} alt=""/>
 	     				</div>
@@ -152,7 +152,7 @@ class Product extends Component {
 	     				</div>
 	     			</div>
 
-	     			<div className='col-6'>
+	     			<div className='col-12 col-md-6'>
 	     				<div style={{padding:'15px'}}>
 	     					<h4 className='light-gray'>Home / </h4>
 	     					<h2>{this.props.product.name}</h2>
