@@ -65,7 +65,7 @@ class Login extends Component {
 		    	<HeaderNavigation/>
 
 		    	<div style={{paddingTop:'45px'}} className='col-12 offset-md-4 col-md-4'>
-		    		<div className='box-shadow' style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
+		    		<div className='box-shadow' style={containerStyle}>
 			    	<h2>Login</h2>
 
 			    	<div style={{paddingTop:'15px', paddingBottom:'15px'}}>
@@ -93,6 +93,12 @@ class Login extends Component {
 		    </div>	
 		)
 	}
+}
+
+const containerStyle = {
+	padding:'30px', 
+	borderRadius:'4px', 
+	border:'1px solid lightgray'
 }
 
 

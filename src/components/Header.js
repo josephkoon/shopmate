@@ -52,7 +52,7 @@ class Header extends Component {
 		}
 
 		return(
-			<div style={{height:'42px', paddingLeft:'15px', paddingRight:'15px', display:'flex', alignItems:'center'}}>
+			<div style={containerStyle}>
 				
 				<div style={{width:'50%', display:'inline-block'}}>
 					{!customerName &&
@@ -66,7 +66,9 @@ class Header extends Component {
 					<span className='topbar'>
 						Hi! 
 						<div className="dropdown" style={{display:'inline-block'}}>
-							<button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className='pink'><strong>{customerName}</strong></span></button>
+							<button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span className='pink'><strong>{customerName}</strong></span>
+							</button>
 							<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								<a className="dropdown-item link" onClick={this.toProfile.bind(this)}>Profile</a>
 								<a className="dropdown-item link" onClick={this.logout.bind(this)} >Logout</a>
@@ -91,6 +93,14 @@ class Header extends Component {
 			</div>
 		);
 	}
+}
+
+const containerStyle = {
+	height:'42px', 
+	paddingLeft:'15px', 
+	paddingRight:'15px', 
+	display:'flex', 
+	alignItems:'center'
 }
 
 

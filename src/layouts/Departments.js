@@ -95,12 +95,12 @@ class Departments extends Component {
 	     		<div style={{display:'inline-block', width:'60px', textAlign:'center'}}>
 		     		{showPrev &&
 	     				<span onClick={this.prevPage.bind(this)} style={{cursor:'pointer', height:'60px', width:'60px'}}>
-	     					<img style={{width:'32px', backgroundColor:'#2E2E2E', borderRadius:'50%'}} src={back} alt=""/> 
+	     					<img style={blackArrowStyle} src={back} alt=""/> 
 	     				</span> 
 	     			}
 		     		{!showPrev &&
 	     				<span style={{height:'60px', width:'60px'}}>
-	     					<img style={{width:'32px', backgroundColor:'lightgray', borderRadius:'50%'}} src={back} alt=""/> 
+	     					<img style={grayArrowStyle} src={back} alt=""/> 
 	     				</span> 
 	     			}
 	 			</div>
@@ -110,12 +110,12 @@ class Departments extends Component {
 	     		<div style={{display:'inline-block', width:'60px', textAlign:'center'}}>
 		     		{showNext &&
 	     				<span onClick={this.nextPage.bind(this)} style={{cursor:'pointer', height:'60px', width:'60px'}}>
-	     					<img style={{width:'32px', backgroundColor:'#2E2E2E', borderRadius:'50%'}} src={forward} alt=""/> 
+	     					<img style={blackArrowStyle} src={forward} alt=""/> 
 	     				</span> 
 	     			}
 	     			{!showNext &&
 	     				<span style={{height:'60px', width:'60px'}}>
-	     					<img style={{width:'32px', backgroundColor:'lightgray', borderRadius:'50%'}} src={forward} alt=""/> 
+	     					<img style={grayArrowStyle} src={forward} alt=""/> 
 	     				</span> 
 	     			}
 	 			</div>
@@ -130,7 +130,7 @@ class Departments extends Component {
 		    	<HeaderNavigation/>
 
 		     	<div className='background-light-gray'>
-			     	<div style={{minHeight:'80vh',paddingTop:'15px', paddingBottom:'15px'}} className='container'>
+			     	<div style={containerStyle} className='container'>
 			     		{pagination}
 				     	<ProductCards/>
 			     	</div>
@@ -141,6 +141,27 @@ class Departments extends Component {
 		)
 	}
 }
+
+
+const containerStyle = {
+	minHeight:'80vh',
+	paddingTop:'15px', 
+	paddingBottom:'15px'
+}
+
+
+const blackArrowStyle = {
+	width:'32px', 
+	backgroundColor:'#2E2E2E', 
+	borderRadius:'50%'
+}
+
+const grayArrowStyle = {
+	width:'32px', 
+	backgroundColor:'lightgray', 
+	borderRadius:'50%'
+}
+
 
 
 function mapStateToProps(state){

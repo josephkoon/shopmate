@@ -201,7 +201,7 @@ class Checkout extends Component {
 		    <div className='col-12 offset-md-4 col-md-4'>
 
 		    	{this.state.step == 1 &&
-		    	<div className='box-shadow' style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
+		    	<div className='box-shadow' style={containerStyle}>
 		    		<div style={{padding:'15px'}}>
 				    	<h2>Delivery</h2>
 						<div className="progress">
@@ -240,7 +240,7 @@ class Checkout extends Component {
 
 
 				{this.state.step == 2 &&
-				<div className='box-shadow' style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
+				<div className='box-shadow' style={containerStyle}>
 					<div style={{padding:'15px'}}>
 						<h2>Confirmation</h2>
 						<div className="progress">
@@ -273,7 +273,7 @@ class Checkout extends Component {
 
 
 				{this.state.step == 3 &&
-				<div className='box-shadow' style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
+				<div className='box-shadow' style={containerStyle}>
 					<div style={{padding:'15px'}}>
 						<h2>Payment</h2>
 						<div className="progress">
@@ -285,7 +285,7 @@ class Checkout extends Component {
 					<form id="payment-form">
 						<div className='form-row' style={{padding:'15px'}}>
 							<h3 className='light-gray'>Enter Card Information</h3>
-							<div style={{padding:'10px', border:'1px solid gray', borderRadius:'10px'}} id="card-element" className="w-100"></div>
+							<div style={stripeStyle} id="card-element" className="w-100"></div>
 							<div id="card-errors" role="alert"></div>
 						</div>
 						<div style={{padding:'15px'}}>
@@ -299,7 +299,7 @@ class Checkout extends Component {
 
 
 				{this.state.step == 4 &&
-				<div className='box-shadow' style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
+				<div className='box-shadow' style={containerStyle}>
 					<div style={{padding:'15px'}}>
 						<h2>Thanks !</h2>
 						<div className="progress">
@@ -322,6 +322,19 @@ class Checkout extends Component {
 		    </div>
 		)
 	}
+}
+
+
+const containerStyle = {
+	padding:'30px', 
+	borderRadius:'4px', 
+	border:'1px solid lightgray'
+}
+
+const stripeStyle = {
+	padding:'10px', 
+	border:'1px solid gray', 
+	borderRadius:'10px'
 }
 
 

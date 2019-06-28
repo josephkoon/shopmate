@@ -57,7 +57,7 @@ class Profile extends Component {
 		    		<HeaderNavigation/>
 
 			    	<div style={{paddingTop:'30px', paddingBottom:'30px'}} className='col-12 offset-md-4 col-md-4'>
-			    		<div style={{padding:'30px', borderRadius:'4px', border:'1px solid lightgray'}}>
+			    		<div style={containerStyle}>
 			    			<div style={{padding:'15px'}}>
 				    			<h2>Profile Information</h2>
 				    			<hr/>
@@ -96,6 +96,12 @@ class Profile extends Component {
 	}
 }
 
+
+const containerStyle = {
+	padding:'30px', 
+	borderRadius:'4px', 
+	border:'1px solid lightgray'
+}
 
 
 function mapStateToProps(state){

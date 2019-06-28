@@ -84,9 +84,9 @@ class HeaderNavigation extends Component {
 
 
 		return(
-			<div className='background-black' style={{height:'60px', paddingLeft:'15px', paddingRight:'15px', display:'flex', alignItems:'center'}}>
+			<div className='background-black' style={containerStyle}>
 				<div style={{width:'25%', display:'inline-block'}}>
-					<span onClick={this.toHome.bind(this)} className='link topbar pink' style={{fontSize:'24px', fontWeight:'500', letterSpacing:'2px'}}>SHOPMATE</span>
+					<span onClick={this.toHome.bind(this)} className='link topbar pink' style={logoStyle}>SHOPMATE</span>
 				</div>
 
 				<div className='d-none d-sm-flex' style={{display:'flex', width:'40%', justifyContent:'space-around', textAlign:'center'}}>
@@ -104,6 +104,20 @@ class HeaderNavigation extends Component {
 	}
 }
 
+
+const containerStyle = {
+	height:'60px', 
+	paddingLeft:'15px', 
+	paddingRight:'15px', 
+	display:'flex', 
+	alignItems:'center'
+}
+
+const logoStyle = {
+	fontSize:'24px', 
+	fontWeight:'500', 
+	letterSpacing:'2px'
+}
 
 const inputStyle = {
 	background:`white url(${search}) no-repeat`,
