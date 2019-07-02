@@ -95,7 +95,7 @@ class Cart extends Component {
 		     				</span> 
 						</td>
 
-						<td className="col-2"><strong>${item.price}</strong></td>
+						<td className="col-2"><strong>${item.subtotal}</strong></td>
 					</tr>
 				);
 			})
