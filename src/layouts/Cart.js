@@ -9,6 +9,7 @@ import HeaderNavigation from '../components/HeaderNavigation'
 import { 
 	getCart,
 	emptyCart,
+	updateQuantity,
 } from '../actions/index';
 
 
@@ -33,8 +34,30 @@ class Cart extends Component {
 	}
 
 
+	minusQuantity(item){
+		if(item.quantity > 1){
+			let quantity = item.quantity - 1
+			this.props.updateQuantity(item.item_id, quantity)
+		}
+		
+	}
+
+
+	addQuantity(item){
+		let quantity = item.quantity + 1
+		this.props.updateQuantity(item.item_id, quantity)
+	}
+
+
+	remove(item){
+		this.props.updateQuantity(item.item_id, 0)
+	}
+
+
 	render(){
 		let cartList
+
+		console.log(this.props.cart)
 
 		//Render cart items
 		if(this.props.cart.length > 0){
@@ -43,15 +66,35 @@ class Cart extends Component {
 
 				return (
 					<tr key={item.item_id} className="d-flex">
+
 						<td className="col-2">
 							<img style={{width:'80%'}} src={image} alt=""/>
 						</td>
+
 						<td className="col-4">
 							<h6><strong>{item.name}</strong></h6>
 							<h6 className='light-gray'>SKU #{item.product_id}</h6>
+
+							<h4 style={{paddingTop:'15px'}}>
+								<span className='link pink' onClick={()=>this.remove(item)}>REMOVE</span>
+							</h4>
 						</td>
 						<td className="col-2">{item.attributes}</td>
-						<td className="col-2">{item.quantity}</td>
+
+						<td className="col-2">
+		     				<span style={{lineHeight:'30px', display:'inline-block', width:'30px', height:'30px', cursor:'pointer', textAlign:'center', fontSize:'24px'}} onClick={() => this.minusQuantity(item)}>
+		     					<strong>-</strong>
+		     				</span> 
+		     				
+		     				<div style={{lineHeight:'30px', display:'inline-block', width:'30px', textAlign:'center'}}>
+								<span>{item.quantity}</span>
+							</div>
+
+		     				<span style={{lineHeight:'30px', display:'inline-block', width:'30px', height:'30px', cursor:'pointer', textAlign:'center', fontSize:'24px'}} onClick={() => this.addQuantity(item)}>
+		     					<strong>+</strong>
+		     				</span> 
+						</td>
+
 						<td className="col-2"><strong>${item.price}</strong></td>
 					</tr>
 				);
@@ -111,6 +154,8 @@ class Cart extends Component {
 }
 
 
+
+
 const tableHeaderStyle = {
 	borderTop:'1px solid lightgray', 
 	borderBottom:'1px solid lightgray'
@@ -129,6 +174,7 @@ const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators({
 		getCart,
 		emptyCart,
+		updateQuantity,
 	}, dispatch);
 };
 

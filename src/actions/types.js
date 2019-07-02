@@ -15,6 +15,7 @@ export const GET_DEPARTMENTS = 'get_departments';
 
 export const SETUP_CART = 'setup_cart';
 export const GET_CART = 'get_cart';
+export const UPDATE_CART = 'update_cart';
 export const GET_CART_TOTAL = 'get_cart_total';
 export const EMPTY_CART = 'empty_cart';
 

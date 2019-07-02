@@ -16,6 +16,7 @@ import {
 
 	SETUP_CART,
 	GET_CART,
+	UPDATE_CART,
 	GET_CART_TOTAL,
 	EMPTY_CART,
 
@@ -708,8 +709,6 @@ export function createOrder(cart_id, shipping_id, tax_id, token){
 			};
 
 			const order = await axios.post(ROOT_URL+'/orders', data, {headers:headers} );
-
-			console.log('order', order)
 			
 			return dispatch(set_Order(order.data));
 
@@ -756,11 +755,7 @@ export function chargeStripe(stripeToken, order_id, description, amount, token){
 				amount,
 			};
 
-			console.log(data)
-
 			const charge = await axios.post(ROOT_URL+'/stripe/charge', data, {headers:headers} );
-
-			console.log('charge', charge)
 
 		} catch(error){
 			//If server returns error, show response
@@ -778,6 +773,45 @@ export function chargeStripe(stripeToken, order_id, description, amount, token){
 
 
 
+
+
+
+export function updateQuantity(item_id, quantity){
+	return async function(dispatch){
+		try {
+
+			let data = {
+				item_id:item_id,
+				quantity:quantity,
+			};
+
+			const cart = await axios.put(ROOT_URL+'/shoppingCart/update/'+item_id, data );
+
+			console.log('cart', cart)
+			dispatch(update_Cart(cart.data))
+
+
+		} catch(error){
+			//If server returns error, show response
+			if(error.response){
+				if(error.response.data){
+					console.log('ERROR', error.response.data)
+				}
+			//For other types of error, just display error
+			} else if(error){
+				console.log('ERROR')
+			}
+		}
+	};
+}
+
+
+export function update_Cart(cart){
+	return {
+		type:UPDATE_CART,
+		payload:cart
+	};
+}
 
 
 
