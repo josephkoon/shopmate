@@ -49,9 +49,6 @@ class Cart extends Component {
 	}
 
 
-	remove(item){
-		this.props.updateQuantity(item.item_id, 0)
-	}
 
 
 	render(){
@@ -74,10 +71,6 @@ class Cart extends Component {
 						<td className="col-4">
 							<h6><strong>{item.name}</strong></h6>
 							<h6 className='light-gray'>SKU #{item.product_id}</h6>
-
-							<h4 style={{paddingTop:'15px'}}>
-								<span className='link pink' onClick={()=>this.remove(item)}>REMOVE</span>
-							</h4>
 						</td>
 						<td className="col-2">{item.attributes}</td>
 
